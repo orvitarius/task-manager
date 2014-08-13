@@ -56,11 +56,11 @@ $(document).ready(function() {
 		var left = timer.seconds * separacio;
 		var $rellotge = $('#'+rellotgeID);
 		if (timer.seconds == 0 ) {
-			clearAgulla(true,false,false, $rellotge);
+			clearAgulla(true,false,false, $rellotge, separacio);
 			left = 0;
 		}
 		if (timer.seconds > 0) {
-			printTick(rellotgeID, 'segons', left, separacio)
+			printTick(rellotgeID, 'segons', left, separacio);
 		}
 		return false;
 	}
@@ -69,7 +69,7 @@ $(document).ready(function() {
 		var left = timer.minutes * separacio;
 		var $rellotge = $('#'+rellotgeID);
 		if (timer.minutes == 0 ) {
-			clearAgulla(false,true,false, $rellotge);
+			clearAgulla(false,true,false, $rellotge, separacio);
 			left = 0;
 		}
 		if (timer.minutes > 0) {
@@ -82,7 +82,7 @@ $(document).ready(function() {
 		var left = timer.hours * separacio;
 		var $rellotge = $('#'+rellotgeID);
 		if (timer.hours == 0 ) {
-			clearAgulla(false,false,true, $rellotge);
+			clearAgulla(false,false,true, $rellotge, separacio);
 			left = 0;
 		}
 		if (timer.hours > 0) {
@@ -114,7 +114,7 @@ $(document).ready(function() {
 		$('#secs').val(sec);
 		$('#mins').val(min);
 		$('#hores').val(hor);
-		printTickSegon(containerID, 7, timer);
+		printTickSegon(containerID, separacio, timer);
 		if (timer.seconds == 0) {
 			printTickMinut(containerID, separacio, timer);
 		}

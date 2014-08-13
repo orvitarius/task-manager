@@ -100,7 +100,7 @@
 				
 				<textarea placeholder="Comentaris"></textarea>
 				
-				<button type="submit" class="boto-form">Guardar</button>
+				<button type="submit" class="boto-form"></button>
 			</form>	
 		</section>
 		

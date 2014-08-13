@@ -19,6 +19,7 @@ var clock = {
 			this.seconds = 0;
 			this.minutes ++;
 			if (this.minutes > 59) {
+				this.minutes = 0;
 				this.hours ++;
 			}
 		}

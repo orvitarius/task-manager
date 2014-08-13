@@ -89,10 +89,10 @@
 		
 		.tick {
 			position: absolute;
-			height:5px;
+			height: 18px;
 			width: 6px;
 			background-color: yellowgreen;
-			top: 7px;
+			top: 1px;
 			opacity: .3;
 		}
 		
@@ -249,14 +249,22 @@
 	//Boto form
 	.boto-form {
 		-webkit-appearance: none;
-		width: 85%;
+		width: 60px;
+		height: 60px;
 		margin: 50px auto 0;
 		display: block;
-		height: 30px;
-		border: 1px solid steelblue;
+		border: 1px solid rgba(steelblue, .5);
 		color: steelblue;
 		font-size: 12pt;
 		background-color: rgba(steelblue, .1);
+		background-image: url(../images/save.png);
+		opacity: .5;
+		@include background-image(no-repeat, auto 35px, center 8px);
+		@include border-radius(50%);
+		
+		&:hover {
+			opacity: 1;
+		}
 	}
 }
 
