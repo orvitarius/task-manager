@@ -99,6 +99,8 @@
 				<input class="data" style="display:none" value="11/08/2014" />
 				
 				<textarea placeholder="Comentaris"></textarea>
+				
+				<button type="submit" class="boto-form">Guardar</button>
 			</form>	
 		</section>
 		
@@ -116,14 +118,16 @@
 								$r = rand(0,1);
 								if ($r == 0) {
 									$class = "";
+									$coment = "comentarii".$i;
 								} else {
 									$class = " no-comen";
+									$coment = "";
 								}
 							?>
 								
 								<tr><td class="data">10 / 08 / 2014 - 12:30</td>
 									<td class="temps">2h 30m</td>
-									<td class="comen <?php echo $class; ?>"><span class="coment-icon"></span></td>
+									<td class="comen <?php echo $class; ?>"><span class="coment-icon"></span><p><?php echo $coment; ?></p></td>
 								</tr>
 								
 							<?php } ?>
@@ -137,6 +141,7 @@
 				</div>
 			</div>
 			
+			<div class="popupcomment"><p></p></div>
 		</section>
 	
 	</section>

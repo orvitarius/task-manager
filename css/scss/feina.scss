@@ -248,6 +248,22 @@
 		color: #666;
 		background-image: url(../stop.png);
 	}
+	
+	
+	
+	//boto form
+	.boto-form {
+		-webkit-appearance: none;
+		width: 85%;
+		margin: 50px auto 0;
+		display: block;
+		height: 30px;
+		border: 1px solid steelblue;
+		//background-color: transparent;
+		color: steelblue;
+		font-size: 12pt;
+		background-color: rgba(steelblue, .1);
+	}
 }
 
 
@@ -300,12 +316,19 @@
 			.comen {
 				width: 80px;
 				//background-color: yellowgreen;
+				color: transparent;
+				overflow: hidden;
+				
+				p {
+					display: none;
+				}
 				
 				
 				.coment-icon {
 					display: block;
 					width: 30px;
 					height: 30px;
+					cursor: pointer;
 					background-image: url(../comment-green.png);
 					@include background-image(no-repeat, 100% 100%, 0 0);	
 				}
@@ -374,6 +397,22 @@
 				background-image: url(../comment-red.png);
 			}
 		}
+	}
+	
+	
+	//comentari
+	.popupcomment {
+		position: absolute;
+		width: 320px;
+		height: 200px;
+		background-color: ivory;
+		top: 180px;
+		left: 120px;
+		//transition: all 1s ease;
+		display: none;
+		padding: 10px;
+		border: 1px solid yellowgreen;
+		@include border-radius(10px);
 	}
 	
 }

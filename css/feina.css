@@ -185,6 +185,16 @@
   background-color: rgba(0, 0, 0, 0.1);
   color: #666;
   background-image: url(../stop.png); }
+#nova-feina .boto-form {
+  -webkit-appearance: none;
+  width: 85%;
+  margin: 50px auto 0;
+  display: block;
+  height: 30px;
+  border: 1px solid steelblue;
+  color: steelblue;
+  font-size: 12pt;
+  background-color: rgba(70, 130, 180, 0.1); }
 
 .feina-sub.sub2 {
   position: relative; }
@@ -216,11 +226,16 @@
       .feina-sub.sub2 .fixedtable table .data {
         width: 200px; }
       .feina-sub.sub2 .fixedtable table .comen {
-        width: 80px; }
+        width: 80px;
+        color: transparent;
+        overflow: hidden; }
+        .feina-sub.sub2 .fixedtable table .comen p {
+          display: none; }
         .feina-sub.sub2 .fixedtable table .comen .coment-icon {
           display: block;
           width: 30px;
           height: 30px;
+          cursor: pointer;
           background-image: url(../comment-green.png);
           background-repeat: no-repeat;
           background-size: 100% 100%;
@@ -259,3 +274,17 @@
         background-image: url(../comment-green.png); }
       .feina-sub.sub2 .total table .comen .coment-icon-red {
         background-image: url(../comment-red.png); }
+  .feina-sub.sub2 .popupcomment {
+    position: absolute;
+    width: 320px;
+    height: 200px;
+    background-color: ivory;
+    top: 180px;
+    left: 120px;
+    display: none;
+    padding: 10px;
+    border: 1px solid yellowgreen;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    background-clip: padding-box; }

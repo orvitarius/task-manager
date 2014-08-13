@@ -221,5 +221,28 @@ $(document).ready(function() {
 		}
 	});
 	
+	
+	
+	
+	$('.coment-icon').hover(function() {
+		//console.log('mouse');
+		var parent = $(this).parent('.comen');
+		var	top = $(this).offset();
+			top = top.bottom;
+			console.log(top);
+		if (!parent.hasClass('no-comen')) {
+			var text = parent.find('p').text();
+			//console.log(text);
+			$('.popupcomment').css('top', top);
+			$('.popupcomment').find('p').text(text);
+			$('.popupcomment').fadeIn();
+		} else {
+			$('.popupcomment').find('p').text('');
+		}
+	});
+	
+	$('.coment-icon').mouseout(function() {
+		$('.popupcomment').fadeOut();
+	});
 
 });
