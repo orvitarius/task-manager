@@ -1,0 +1,80 @@
+@mixin border-radius($radius) {
+	border-radius: $radius;
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	background-clip: padding-box;
+}
+
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+	@if $inset {
+		-webkit-box-shadow: inset $left $top $blur $color;
+		   -moz-box-shadow: inset $left $top $blur $color;
+		        box-shadow: inset $left $top $blur $color;
+	} @else {
+		-webkit-box-shadow: $left $top $blur $color;
+		   -moz-box-shadow: $left $top $blur $color;
+		        box-shadow: $left $top $blur $color;
+	}
+}
+
+
+@mixin multiple-box-shadow($shadow...) {
+      -webkit-box-shadow: $shadow;
+         -moz-box-shadow: $shadow;       
+              box-shadow: $shadow;
+    }
+
+@mixin background-image($repeat, $size, $position) {
+	background: {
+		repeat: $repeat;
+		size: $size;
+		position: $position;
+	}
+}
+
+@mixin transition($property, $speed) {
+	-webkit-transition: $property $speed ease;
+	   -moz-transition: $property $speed ease;
+         -o-transition: $property $speed ease;
+            transition: $property $speed ease;
+}
+
+@mixin linear-gradient($fromColor, $toColor) {
+  background-color: $toColor; /* Fallback Color */
+  background-image: -webkit-gradient(linear, left top, left bottom, from($fromColor), to($toColor)); /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, $fromColor, $toColor); /* Chrome 10+, Saf5.1+, iOS 5+ */
+  background-image:    -moz-linear-gradient(top, $fromColor, $toColor); /* FF3.6 */
+  background-image:     -ms-linear-gradient(top, $fromColor, $toColor); /* IE10 */
+  background-image:      -o-linear-gradient(top, $fromColor, $toColor); /* Opera 11.10+ */
+  background-image:         linear-gradient(top, $fromColor, $toColor);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#{$fromColor}', EndColorStr='#{$toColor}');
+}
+
+
+@mixin transformRotate($degree) {
+	-webkit-transform: rotate($degree);
+	   -moz-transform: rotate($degree);
+		 -o-transform: rotate($degree);
+		-ms-transform: rotate($degree);
+		    transform: rotate($degree);
+}
+
+@mixin placeholderStyle {
+	&::-webkit-input-placeholder { @content }
+	&::-ms-input-placeholder { @content }
+	&::-moz-placeholder { @content }
+	&:-moz-placeholder { @content }
+}
+
+
+@mixin userselectnone {
+	-webkit-user-select: none;  /* Chrome all / Safari all */
+       -moz-user-select: none;     /* Firefox all */
+        -ms-user-select: none;      /* IE 10+ */
+
+}
+
+
+@mixin responsive($breakpoint) {
+	@media only screen and (max-width: $breakpoint + px) { @content; }
+}

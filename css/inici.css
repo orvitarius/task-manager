@@ -1,0 +1,284 @@
+* {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300; }
+
+html {
+  min-height: 100%;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300; }
+
+body {
+  background-image: url(../cork.jpg);
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+  background-position: 0 0; }
+
+.button {
+  width: 23px;
+  height: 23px;
+  background-color: black;
+  border: 2px solid darkred;
+  color: darkred;
+  display: block;
+  text-align: center;
+  line-height: 18px;
+  font-size: 23pt;
+  cursor: pointer;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  background-clip: padding-box; }
+
+.menu-superior {
+  width: 100%;
+  height: 35px;
+  background-color: black;
+  border-bottom: 5px solid darkred;
+  position: fixed;
+  top: 0;
+  z-index: 10; }
+  .menu-superior .titol-projecte {
+    color: ivory;
+    line-height: 35px;
+    margin: 0 0 0 40px;
+    font-size: 14pt;
+    font-weight: 100;
+    letter-spacing: 1pt;
+    width: 150px;
+    display: block;
+    text-decoration: none; }
+  .menu-superior .fletxa {
+    position: absolute;
+    top: 12px;
+    left: 10px; }
+  .menu-superior .selector {
+    display: none;
+    position: relative;
+    margin-top: 5px;
+    margin-left: 40px; }
+    .menu-superior .selector li {
+      width: 140px;
+      padding: 10px 0 10px 10px;
+      background-color: #c0c0c0;
+      border-bottom: 1px solid #999;
+      z-index: 2; }
+      .menu-superior .selector li a {
+        text-decoration: none;
+        color: black;
+        width: 100%;
+        height: 100%;
+        display: block; }
+      .menu-superior .selector li:hover {
+        background-color: #999; }
+        .menu-superior .selector li:hover a {
+          color: ivory; }
+  .menu-superior #afegir-projecte {
+    position: absolute;
+    right: 15px;
+    top: 4px; }
+
+.tasques {
+  width: 900px;
+  float: left;
+  margin: 50px 0 50px 20px;
+  z-index: 1;
+  position: relative; }
+  .tasques .tasca {
+    float: left;
+    position: relative;
+    width: 200px;
+    height: 130px;
+    margin: 10px;
+    margin-right: 5px;
+    background-color: ANTIQUEWHITE;
+    background: linear-gradient(to bottom, antiquewhite, antiquewhite 98%, darkred 2%, darkred);
+    background-size: 100% 20px;
+    user-select: none;
+    z-index: 1;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    background-clip: padding-box;
+    -webkit-box-shadow: 1px 3px 6px #555555;
+    -moz-box-shadow: 1px 3px 6px #555555;
+    box-shadow: 1px 3px 6px #555555; }
+    .tasques .tasca .tasca-titol {
+      display: block;
+      margin-bottom: 5px;
+      width: 96%;
+      padding: 5px 2%;
+      background-color: antiquewhite;
+      border-bottom: 2px solid darkred;
+      user-select: none;
+      cursor: pointer; }
+    .tasques .tasca .tasca-descr {
+      font-size: 10pt;
+      text-align: justify;
+      line-height: 15pt;
+      margin: 15px 5px 5px;
+      user-select: none; }
+  .tasques .activada {
+    outline: 5px solid goldenrod; }
+  .tasques .Acabada .tasca-titol {
+    text-decoration: line-through; }
+  .tasques .Inactiva {
+    opacity: .7; }
+  .tasques .urgent .tasca-titol {
+    background-color: yellowgreen; }
+
+.tasques.feina-hidden {
+  width: 1100px; }
+
+.feina {
+  float: right;
+  width: 300px;
+  margin: 60px 0 50px 0;
+  padding: 0;
+  background-color: #294d6b;
+  min-height: 525px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  position: relative; }
+  .feina * {
+    display: block; }
+  .feina #feina-sidebar {
+    height: 525px;
+    width: 30px;
+    background-color: #3f75a2;
+    float: left;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    position: relative; }
+  .feina form {
+    width: 220px;
+    float: right;
+    margin-right: 25px;
+    margin-top: 5px; }
+  .feina .feina-titol {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 18pt;
+    font-family: helvetica;
+    font-weight: 100;
+    color: ivory;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid darkred;
+    text-indent: 5px; }
+    .feina .feina-titol::-webkit-input-placeholder {
+      color: ivory; }
+  .feina .feina-descr {
+    width: 100%;
+    height: 100px;
+    box-sizing: border-box;
+    margin: 10px 0;
+    background-color: #efefef;
+    border: 1px solid #a0a0a0;
+    font-size: 12pt;
+    font-weight: 100;
+    resize: none; }
+    .feina .feina-descr::-webkit-input-placeholder {
+      color: darkred; }
+  .feina label {
+    font-weight: 100;
+    display: block;
+    font-size: 13pt;
+    color: ivory; }
+  .feina select {
+    -webkit-appearance: none;
+    width: 100%;
+    font-size: 13pt;
+    font-weight: 100;
+    min-height: 30px;
+    text-indent: 5px;
+    background-color: #efefef;
+    margin-bottom: 15px;
+    border-radius: 0;
+    background-image: url(../dropdown.png);
+    color: darkred;
+    background-repeat: no-repeat;
+    background-size: 15px 10px;
+    background-position: 275px center; }
+  .feina .floater {
+    text-align: center;
+    margin-top: 20px;
+    line-height: 25px; }
+  .feina #datalimit {
+    width: 200px;
+    height: 20px;
+    margin: 0 0 20px 0px;
+    font-size: 12pt;
+    text-align: center;
+    background-color: #efefef;
+    border: 1px solid #a0a0a0; }
+  .feina .buttonform {
+    width: 60px;
+    height: 40px;
+    -webkit-appearance: none;
+    border: none;
+    color: ivory;
+    font-size: 40px;
+    line-height: 0px;
+    padding: 0;
+    background-color: steelblue;
+    cursor: pointer; }
+  .feina .one {
+    margin: 20px 0 0 0;
+    width: 100%; }
+  .feina .two-one {
+    margin-left: 0;
+    width: 100px;
+    float: left; }
+  .feina .two-two {
+    margin-top: 20px;
+    margin-right: 0;
+    width: 100px;
+    float: right; }
+
+.feina.hidden {
+  right: -0px;
+  width: 30px;
+  overflow: hidden; }
+  .feina.hidden * {
+    display: none; }
+  .feina.hidden #feina-sidebar {
+    display: block; }
+
+.filtres {
+  width: 100%;
+  height: 30px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: black;
+  border-top: 4px solid goldenrod; }
+  .filtres label {
+    color: ivory;
+    line-height: 30px;
+    font-weight: 100;
+    margin-left: 25px;
+    margin-right: 3px;
+    font-size: 10pt; }
+  .filtres .filtres-subs {
+    color: steelblue; }
+  .filtres .filtres-prior {
+    color: yellowgreen; }
+  .filtres .filtres-est {
+    color: orange; }
+
+[draggable=true] {
+  -khtml-user-drag: element; }
+
+#paperera {
+  position: fixed;
+  bottom: 44px;
+  left: 30px;
+  width: 40px;
+  height: 80px;
+  z-index: 2000;
+  background-image: url(../bin.png);
+  background-repeat: no-repeat;
+  background-size: 100% 50px;
+  background-position: center bottom; }
+  #paperera:hover {
+    background-image: url(../bin-open.png); }

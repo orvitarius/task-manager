@@ -1,0 +1,241 @@
+.feina-contingut {
+  width: 95%;
+  min-height: 600px;
+  margin: 60px 2.5%;
+  background-color: antiquewhite;
+  -webkit-box-shadow: 0px 4px 6px #333333;
+  -moz-box-shadow: 0px 4px 6px #333333;
+  box-shadow: 0px 4px 6px #333333; }
+  .feina-contingut .feina-sub {
+    width: 50%;
+    min-height: 600px;
+    float: left;
+    position: relative; }
+    .feina-contingut .feina-sub .feina-sub-titol {
+      background-color: yellowgreen;
+      display: block;
+      margin: 0;
+      padding: 5px 0;
+      text-indent: 10px;
+      width: 100%;
+      font-size: 14pt;
+      border-bottom: 1px solid yellowgreen; }
+      .feina-contingut .feina-sub .feina-sub-titol b {
+        color: ivory;
+        float: right;
+        margin-right: 20px;
+        font-size: 12pt;
+        margin-top: 2px; }
+
+.feina-sub.sub1 {
+  background-image: url(../corner1.png);
+  background-repeat: no-repeat;
+  background-size: 40px 40px;
+  background-position: left bottom; }
+
+.rellotge {
+  width: 462px;
+  height: 80px;
+  background-color: #f7e0c0;
+  margin: 10px 70px 20px;
+  position: relative;
+  overflow: auto; }
+  .rellotge label {
+    float: left;
+    width: 20px;
+    height: 17px;
+    font-size: 10pt;
+    padding-top: 3px;
+    margin: 5px 0 0 5px;
+    display: block;
+    text-align: center;
+    line-height: 15px;
+    color: ivory;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    background-clip: padding-box; }
+  .rellotge .segons-label {
+    background-color: yellowgreen; }
+  .rellotge .minuts-label {
+    background-color: darkred; }
+  .rellotge .hores-label {
+    background-color: steelblue; }
+  .rellotge .agulla {
+    width: 428px;
+    height: 20px;
+    float: left;
+    margin: 5px 0 0;
+    position: relative;
+    border-right: 3px solid yellowgreen; }
+    .rellotge .agulla .tick {
+      position: absolute;
+      height: 5px;
+      width: 6px;
+      background-color: yellowgreen;
+      top: 7px;
+      opacity: .3; }
+    .rellotge .agulla .min {
+      background-color: darkred; }
+    .rellotge .agulla .hor {
+      background-color: steelblue; }
+    .rellotge .agulla .end {
+      position: absolute;
+      width: 5px;
+      background-color: yellowgreen;
+      height: 20px;
+      top: 0;
+      left: 7px;
+      border-radius: 20px;
+      -webkit-border-radius: 20px;
+      -moz-border-radius: 20px;
+      background-clip: padding-box; }
+  .rellotge .minuts {
+    border-color: darkred; }
+    .rellotge .minuts .end {
+      background-color: darkred; }
+  .rellotge .hores {
+    border-color: steelblue; }
+    .rellotge .hores .end {
+      background-color: steelblue; }
+
+#nova-feina input {
+  text-align: center;
+  -webkit-appearance: none;
+  font-size: 13pt;
+  box-shadow: none;
+  border: none; }
+#nova-feina .data {
+  width: 120px;
+  margin: 20px auto;
+  display: block; }
+#nova-feina textarea {
+  width: 80%;
+  height: 200px;
+  border: none;
+  margin: 50px auto 0;
+  padding: 0 10px;
+  font-size: 12pt;
+  line-height: 25px;
+  display: block;
+  resize: none;
+  background-image: -webkit-linear-gradient(antiquewhite 95%, #adadad 100%);
+  background-repeat: repeat-y;
+  background-size: 100% 25px;
+  background-position: 0 0; }
+  #nova-feina textarea::-webkit-input-placeholder {
+    color: darkred; }
+#nova-feina .time {
+  width: 128px;
+  display: block;
+  margin: 20px auto 0;
+  /*.time-s {
+  	color: yellowgreen;
+  }
+  
+  .time-m {
+  	color: darkred;
+  }*/ }
+  #nova-feina .time label {
+    font-size: 20pt;
+    color: #c0c0c0; }
+  #nova-feina .time input {
+    width: 30px;
+    font-size: 20pt;
+    background-color: transparent;
+    color: #b0b0b0; }
+#nova-feina .timer-button {
+  width: 128px;
+  display: block;
+  margin: auto;
+  float: left;
+  border: 1px solid yellowgreen;
+  background-color: rgba(154, 205, 50, 0.2);
+  color: #7ba428;
+  margin-bottom: 60px;
+  cursor: pointer; }
+#nova-feina .timer-button#stop {
+  border: 1px solid darkred;
+  background-color: rgba(139, 0, 0, 0.2);
+  color: #580000;
+  margin-left: 50px; }
+#nova-feina .timer-button#start {
+  margin-left: 150px; }
+#nova-feina .timer-button.reset#stop {
+  border-color: black;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: black; }
+
+.feina-sub.sub2 {
+  position: relative; }
+  .feina-sub.sub2 .feina-sub-titol {
+    color: yellowgreen;
+    background-color: transparent; }
+  .feina-sub.sub2 .fixedtable {
+    width: 90%;
+    min-height: 0;
+    height: 540px;
+    overflow-y: scroll;
+    position: relative;
+    margin: 10px auto;
+    position: relative; }
+    .feina-sub.sub2 .fixedtable .scrollbody {
+      height: 90%;
+      overflow-y: scroll; }
+    .feina-sub.sub2 .fixedtable table {
+      width: 100%;
+      border-collapse: collapse; }
+      .feina-sub.sub2 .fixedtable table td {
+        height: 40px;
+        border-bottom: 1px solid #e0e0e0;
+        border-top: none;
+        vertical-align: bottom;
+        font-size: 13pt;
+        text-align: center;
+        color: #999; }
+      .feina-sub.sub2 .fixedtable table .data {
+        width: 200px; }
+      .feina-sub.sub2 .fixedtable table .comen {
+        width: 80px; }
+        .feina-sub.sub2 .fixedtable table .comen .coment-icon {
+          display: block;
+          width: 30px;
+          height: 30px;
+          background-image: url(../comment-green.png);
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+          background-position: 0 0; }
+      .feina-sub.sub2 .fixedtable table .seleccionada td {
+        color: #8db3d3; }
+      .feina-sub.sub2 .fixedtable table .seleccionada .comen .coment-icon {
+        background-image: url(../comment-blue.png); }
+      .feina-sub.sub2 .fixedtable table .no-comen .coment-icon {
+        background-image: url(../comment-red.png); }
+  .feina-sub.sub2 .total {
+    position: fixed;
+    bottom: 50px;
+    width: 550px; }
+    .feina-sub.sub2 .total table {
+      width: 100%; }
+    .feina-sub.sub2 .total table td {
+      color: #666;
+      border-top: 1px solid #d0d0d0;
+      border-bottom: none;
+      vertical-align: middle;
+      height: 65px; }
+    .feina-sub.sub2 .total table .comen {
+      background-color: transparent;
+      width: 80px; }
+      .feina-sub.sub2 .total table .comen .coment-icon-blank, .feina-sub.sub2 .total table .comen .coment-icon-green, .feina-sub.sub2 .total table .comen .coment-icon-red {
+        display: block;
+        width: 30px;
+        height: 30px;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-position: 0 0; }
+      .feina-sub.sub2 .total table .comen .coment-icon-blank {
+        background-image: url(../comment-blank.png); }
+      .feina-sub.sub2 .total table .comen .coment-icon-green {
+        background-image: url(../comment-green.png); }
+      .feina-sub.sub2 .total table .comen .coment-icon-red {
+        background-image: url(../comment-red.png); }

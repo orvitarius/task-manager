@@ -1,0 +1,273 @@
+/* Variables globals */
+
+$colorText1: steelblue;
+$marroN2: #c2bfae;
+$marroN1: #d9d6c7;
+
+
+/* Placeholders */
+
+%afterFlotador {
+	&:after {
+		content: "";
+		display: block;
+		clear: both;
+	}
+}
+
+
+%noshadow {
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	-o-box-shadow: none;
+	box-shadow: none;
+}
+
+/* ------------------------------ */
+/* ------------ TABS ------------ */
+/* ------------------------------ */
+
+.tab-container {
+	@extend %afterFlotador;
+	width: 100%;
+	min-height: 100%;
+		
+	/* Capcaleres */
+	.tab-header {
+		width: 100%;
+		height: 30px;
+		border-bottom: 2px solid darken($marroN2, 10%);
+		
+		ul {
+			
+			li {
+				float: left;
+				color: darken($marroN2, 20%);
+				cursor: pointer;
+				font-size: 1.1em;
+				line-height: 30px;
+				text-align: center;
+				width: 200px;
+				background-color: $marroN2;
+				margin-left: 20px;
+				border-top-left-radius: 5px;
+				border-top-right-radius: 5px;
+				
+				&:hover {
+					color: lighten($marroN1, 5%);
+				}
+			}
+			
+			li.current-tabheader {
+				color: $colorText1;
+				background-color: darken($marroN2, 10%);
+			}
+			
+			li.longtab {
+				width: 350px;
+			}
+		}
+	}
+	
+	/* Tabs */
+	.tab-content {
+		position: relative;
+		
+		.tabpage {
+			width: 100%;
+			padding: 20px 0 0;
+			height: 100%;
+			position: absolute;
+			display: none;
+			
+			&:after {
+				content: "";
+				clear: both;
+				display: block;
+			}			
+		}
+		
+		.tabpage.current-tabpage {
+			display: block;
+		}
+		
+	}
+}
+
+
+
+/* ------------------------------ */
+/* --------- CHECKBOXES --------- */
+/* ------------------------------ */
+
+input[type=checkbox].checkcss {
+	display: none;
+}
+
+.checklabel {
+	cursor: pointer;
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	top: 0;
+  	left: 50%;
+  	margin-left: -10px;
+	background: rgba(70,130,180, 0.2);
+	@include border-radius(5px);
+	@include box-shadow(0,0,5px,rgba(40,100,140,0.8),true);
+
+	&:after {
+		opacity: 0.1;
+		content: '';
+		position: absolute;
+		width: 8px;
+		height: 4px;
+		background: transparent;
+		top: 5px;
+		left: 4px;
+		border: 4px solid forestgreen;
+		border-top: none;
+		border-right: none;
+		@include transformRotate(-45deg);
+	}
+
+	&:hover::after {
+		opacity: 0.5;
+	}
+}
+
+input[type=checkbox]:checked + .checklabel:after {
+	opacity: 1;
+}
+
+
+
+/* ------------------------------ */
+/* ----------- BOTONS ----------- */
+/* ------------------------------ */
+.botonsnavegacio {
+	margin: 0 0 10px 0;
+	float: none;
+	width: 100%;
+	height: 50px;
+	color: transparent;
+	@include responsive(1280) {
+		height: 40px;
+	}
+	
+	ul {
+		@extend %afterFlotador;
+		width: 100%;
+		margin: 0;
+		height: 100%;
+	
+		li {
+			float: left;
+			margin: 0 10px 0 0;
+			
+			h2 {
+				float: left;
+				line-height: 45px;
+				font-size: 1.2em;
+				color: darken($marroN2, 20%);
+			}
+		}
+		
+		.petit {
+			height: 35px;
+			width: 35px;
+			
+			a {
+				height: 25px;
+				width: 25px;
+			}
+		}
+		
+		.button {
+			height: 45px;
+			width: 45px;
+			background-color: $marroN1;
+			border-top: 1px solid $marroN2;
+			@include border-radius(50%);
+			@include box-shadow(3px, 0, 6px, darken($marroN2, 15%), true);
+			@include responsive(1300) {
+				height: 40px;
+				width: 40px;
+			}
+			
+			a, >span {
+				display: block;
+				-webkit-appearance: none;
+				text-decoration: none;
+				background-color: #f7f7f7;
+				width: 35px;
+				height: 35px;
+				position: relative;
+				margin: 4px auto;
+				border: 1px solid transparent;
+				@include border-radius(50%);
+				@include multiple-box-shadow(0 4px 6px #aaa, inset 0 2px 4px #fff);
+				@include linear-gradient(lighten($marroN1, 10%), darken($marroN2, 0));
+				@include responsive(1300) {
+					height: 30px;
+					width: 30px;
+				}
+				
+				
+				&:active {
+					border: 1px solid darken($marroN2, 20%);
+					@include multiple-box-shadow(0px 2px 3px #ccc inset, 0px 2px 3px #ccc);
+				}
+				
+				span, input {
+					display: block;
+					width: 100%;
+					height: 100%;
+					cursor: pointer;
+					@include background-image(no-repeat, auto 60%, center center);
+				}
+				
+				input {
+					display: block;
+					width: 100%;
+					height: 100%;
+					background-color: transparent;
+					cursor: pointer;
+					-webkit-appearance: none;
+					border: none;
+					color: transparent;
+					@include border-radius(50%);
+					@include background-image(no-repeat, auto 60%, center center);
+				}
+			}
+			
+			input {
+				
+				@include background-image(no-repeat, auto 60%, center center);
+			}
+		}		
+	}
+	
+	.onebutton {
+		width: 45px;
+		height: 45px;
+		margin: 0 auto;
+	}
+}
+
+
+
+/* Icon classes */ /* TODO --> SPRITE */
+
+.icon-first			{ background-image: url(../images/icons/botons-superior/first.png); }
+.icon-last			{ background-image: url(../images/icons/botons-superior/last.png); }
+.icon-next			{ background-image: url(../images/icons/botons-superior/next.png); }
+.icon-prev			{ background-image: url(../images/icons/botons-superior/prev.png); }
+.icon-add			{ background-image: url(../images/icons/botons-superior/add.png); }
+.icon-search		{ background-image: url(../images/icons/botons-superior/search.png); }
+.icon-delete		{ background-image: url(../images/icons/botons-superior/delete.png); }
+.icon-edit			{ background-image: url(../images/icons/botons-superior/edit.png); }
+.icon-first:hover	{ background-image: url(../images/icons/botons-superior/first2hover.png); }
+.icon-accept		{ background-image: url(../images/icons/botons-superior/tick.png); }
+.icon-pdf			{ background-image: url(../images/icons/botons-superior/pdf.png); }
+.icon-estad			{ background-image: url(../images/icons/botons-superior/estad.png); }

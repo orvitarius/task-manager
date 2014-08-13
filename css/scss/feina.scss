@@ -1,0 +1,363 @@
+@import 'mixins.scss';
+
+.feina-contingut {
+	width: 95%;
+	min-height: 600px;
+	margin: 60px 2.5%;
+	background-color: antiquewhite;
+	@include box-shadow(4px, 0px, 6px, #333);
+	
+	.feina-sub {
+		width: 50%;
+		min-height: 600px;
+		float: left;
+		position: relative;
+		
+		.feina-sub-titol {
+			background-color: yellowgreen;
+			display: block;
+			margin: 0;
+			padding: 5px 0;
+			text-indent: 10px;
+			width: 100%;
+			font-size: 14pt;
+			border-bottom: 1px solid yellowgreen;
+			
+			b {
+				color: ivory;
+				float: right;
+				margin-right: 20px;
+				font-size: 12pt;
+				margin-top: 2px;
+			}
+		}
+	}
+}
+
+
+
+.feina-sub.sub1 {
+	background-image: url(../corner1.png);
+	@include background-image(no-repeat, 40px 40px, left bottom);
+}
+
+
+
+
+
+//clock
+.rellotge {
+	width: 462px;
+	height: 80px;
+	background-color: darken(antiquewhite, 5%);
+	margin: 10px 70px 20px;
+	position: relative;
+	overflow: auto;
+	//border: 1px solid darkred;
+	
+	label {
+		float: left;
+		width: 20px;
+		height: 17px;
+		font-size: 10pt;
+		padding-top: 3px;
+		margin: 5px 0 0 5px;
+		display: block;
+		text-align: center;
+		line-height: 15px;
+		color: ivory;
+		@include border-radius(50%);
+	}
+	
+	.segons-label {
+		background-color: yellowgreen;
+		
+	}
+	.minuts-label {
+		background-color: darkred;
+	}
+	.hores-label {
+		background-color: steelblue;
+	}
+	
+	.agulla {
+		width: 428px;
+		height: 20px;
+		float: left;
+		margin: 5px 0 0;
+		//background-color: ivory;
+		position: relative;
+		//border-left: 1px solid yellowgreen;
+		border-right: 3px solid yellowgreen;
+		//background-color: rgba(yellowgreen, .1);
+		//@include box-shadow(1px, 2px, 10px, rgba(30,30,30,.2), true);
+		//@include border-radius(5px);
+		
+		.tick {
+			position: absolute;
+			height:5px;
+			width: 6px;
+			background-color: yellowgreen;
+			top: 7px;
+			opacity: .3;
+			//@include border-radius(10px);
+		}
+		
+		.min {
+			background-color: darkred;
+		}
+		
+		.hor {
+			background-color: steelblue;
+		}
+		
+		.end {
+			position: absolute;
+			width: 5px;
+			background-color: yellowgreen;
+			height: 20px;
+			top: 0;
+			left: 7px;
+			@include border-radius(20px);
+		}
+	}
+	
+	.minuts {
+		border-color: darkred;
+		
+		.end { background-color: darkred; }
+	}
+	
+	.hores {
+		border-color: steelblue;
+		
+		.end { background-color: steelblue; }
+	}
+}
+
+
+
+
+
+
+#nova-feina {
+	
+	input {
+		text-align: center;
+		-webkit-appearance: none;
+		font-size: 13pt;
+		box-shadow: none;
+		border: none;
+	}
+	
+	.data {
+		width: 120px;
+		margin: 20px auto;
+		display: block;
+	}
+	
+	textarea {
+		width: 80%;
+		height: 200px;
+		border: none;
+		margin: 50px auto 0;
+		padding: 0 10px;
+		font-size: 12pt;
+		line-height: 25px;
+		display: block;
+		resize: none;
+		background-image: -webkit-linear-gradient(antiquewhite 95%, lighten(#a0a0a0, 5%) 100%);
+		@include background-image(repeat-y, 100% 25px, 0 0);
+		
+		&::-webkit-input-placeholder {
+			//font-size: 11pt;
+			color: darkred;
+   		}
+	}
+	
+	.time {
+		width: 128px;
+		display: block;
+		margin: 20px auto 0;
+		
+		label {
+			font-size: 20pt;
+			color: #c0c0c0;
+		}
+	
+		input {
+			width: 30px;
+			font-size: 20pt;
+			background-color: transparent;
+			//color: lighten(steelblue, 20%);
+			color: #b0b0b0;
+		}
+		
+		/*.time-s {
+			color: yellowgreen;
+		}
+		
+		.time-m {
+			color: darkred;
+		}*/
+	}
+	
+	
+	//boto rellotge
+	.timer-button {
+		width: 128px;
+		display: block;
+		margin: auto;
+		float: left;
+		border: 1px solid yellowgreen;
+		background-color: rgba(yellowgreen, .2);
+		color: darken(yellowgreen, 10%);
+		margin-bottom: 60px;
+		cursor: pointer;
+	}
+	
+	.timer-button#stop {
+		border: 1px solid darkred;
+		background-color: rgba(darkred, .2);
+		color: darken(darkred, 10%);
+		margin-left: 50px;
+	}
+	
+	.timer-button#start {
+		margin-left: 150px;
+	}
+	
+	.timer-button.reset#stop {
+		border-color: black;
+		background-color: rgba(black, .2);
+		color: black;
+	}
+}
+
+
+
+
+
+//Taula feina
+.feina-sub.sub2 {
+	position: relative;
+	
+	.feina-sub-titol {
+		color: yellowgreen;
+		background-color: transparent;
+		//text-align: center;
+	}
+	
+	.fixedtable {
+		width: 90%;
+		min-height: 0;
+		height: 540px;
+		overflow-y: scroll;
+		position: relative;
+		margin: 10px auto;
+		position: relative;
+		
+		.scrollbody {
+			height: 90%;
+			overflow-y: scroll;
+		}
+		
+		table {
+			width: 100%;
+			border-collapse: collapse;
+		
+			td {
+				//background-color: ivory;
+				height: 40px;
+				border-bottom: 1px solid #e0e0e0;
+				border-top: none;
+				vertical-align: bottom;
+				font-size: 13pt;
+				text-align: center;
+				color: #999;
+			}
+			
+			.data {
+				width: 200px;	
+			}
+			
+			.comen {
+				width: 80px;
+				//background-color: yellowgreen;
+				
+				
+				.coment-icon {
+					display: block;
+					width: 30px;
+					height: 30px;
+					background-image: url(../comment-green.png);
+					@include background-image(no-repeat, 100% 100%, 0 0);	
+				}
+			}
+			
+			.seleccionada {
+				
+				td {
+					color: lighten(steelblue, 20%);
+				}
+				
+				.comen {
+					.coment-icon {
+						background-image: url(../comment-blue.png);
+					}
+				}
+			}
+			
+			.no-comen {
+				.coment-icon {
+					background-image: url(../comment-red.png);
+				}
+			}
+		}
+	}
+	
+	.total {
+		position: fixed;
+		bottom: 50px;
+		width: 550px;
+		
+		table {
+			width: 100%;
+		}
+		
+		table td {
+			color: #666;
+			border-top: 1px solid #d0d0d0;
+			border-bottom: none;
+			vertical-align: middle;
+			height: 65px;
+		}
+		
+		table .comen {
+			background-color: transparent;
+			width: 80px;
+			
+			
+			.coment-icon-blank, .coment-icon-green, .coment-icon-red {
+				display: block;
+				width: 30px;
+				height: 30px;
+				//background-image: url(../comment-green.png);
+				@include background-image(no-repeat, 100% 100%, 0 0);
+			}
+			
+			.coment-icon-blank {
+				background-image: url(../comment-blank.png);
+			}
+			
+			.coment-icon-green {
+				background-image: url(../comment-green.png);
+			}
+			
+			.coment-icon-red {
+				background-image: url(../comment-red.png);
+			}
+		}
+	}
+	
+}
