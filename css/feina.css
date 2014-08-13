@@ -67,7 +67,11 @@
     float: left;
     margin: 5px 0 0;
     position: relative;
-    border-right: 3px solid yellowgreen; }
+    border-right: 5px solid yellowgreen;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    background-clip: padding-box; }
     .rellotge .agulla .tick {
       position: absolute;
       height: 5px;
@@ -111,7 +115,7 @@
   display: block; }
 #nova-feina textarea {
   width: 80%;
-  height: 200px;
+  height: 150px;
   border: none;
   margin: 50px auto 0;
   padding: 0 10px;
@@ -145,26 +149,42 @@
     background-color: transparent;
     color: #b0b0b0; }
 #nova-feina .timer-button {
-  width: 128px;
+  width: 40px;
+  height: 40px;
   display: block;
   margin: auto;
   float: left;
-  border: 1px solid yellowgreen;
-  background-color: rgba(154, 205, 50, 0.2);
-  color: #7ba428;
+  border: 1px solid rgba(154, 205, 50, 0.8);
+  background-color: rgba(154, 205, 50, 0.1);
+  color: #8bb92d;
   margin-bottom: 60px;
-  cursor: pointer; }
+  cursor: pointer;
+  opacity: .5;
+  background-image: url(../play.png);
+  background-repeat: no-repeat;
+  background-size: auto 50%;
+  background-position: center center;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  background-clip: padding-box; }
+  #nova-feina .timer-button:focus {
+    outline: 0; }
+  #nova-feina .timer-button:hover {
+    opacity: 1; }
 #nova-feina .timer-button#stop {
-  border: 1px solid darkred;
-  background-color: rgba(139, 0, 0, 0.2);
-  color: #580000;
-  margin-left: 50px; }
+  border-color: rgba(139, 0, 0, 0.3);
+  background-color: rgba(139, 0, 0, 0.1);
+  color: darkred;
+  margin-left: 30px;
+  background-image: url(../pause.png); }
 #nova-feina .timer-button#start {
-  margin-left: 150px; }
+  margin-left: 250px; }
 #nova-feina .timer-button.reset#stop {
-  border-color: black;
-  background-color: rgba(0, 0, 0, 0.2);
-  color: black; }
+  border-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #666;
+  background-image: url(../stop.png); }
 
 .feina-sub.sub2 {
   position: relative; }

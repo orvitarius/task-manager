@@ -88,10 +88,10 @@
 		//background-color: ivory;
 		position: relative;
 		//border-left: 1px solid yellowgreen;
-		border-right: 3px solid yellowgreen;
+		border-right: 5px solid yellowgreen;
 		//background-color: rgba(yellowgreen, .1);
 		//@include box-shadow(1px, 2px, 10px, rgba(30,30,30,.2), true);
-		//@include border-radius(5px);
+		@include border-radius(3px);
 		
 		.tick {
 			position: absolute;
@@ -158,7 +158,7 @@
 	
 	textarea {
 		width: 80%;
-		height: 200px;
+		height: 150px;
 		border: none;
 		margin: 50px auto 0;
 		padding: 0 10px;
@@ -203,34 +203,50 @@
 	}
 	
 	
-	//boto rellotge
+	//botons rellotge
 	.timer-button {
-		width: 128px;
+		width: 40px;
+		height: 40px;
 		display: block;
 		margin: auto;
 		float: left;
-		border: 1px solid yellowgreen;
-		background-color: rgba(yellowgreen, .2);
-		color: darken(yellowgreen, 10%);
+		border: 1px solid rgba(yellowgreen, .8);
+		background-color: rgba(yellowgreen, .1);
+		//background-color: transparent;
+		color: darken(yellowgreen, 5%);
 		margin-bottom: 60px;
 		cursor: pointer;
+		opacity: .5;
+		background-image: url(../play.png);
+		@include background-image(no-repeat, auto 50%, center center);
+		@include border-radius(50%);
+		
+		&:focus {
+			outline: 0;
+		}
+		
+		&:hover {
+			opacity: 1;
+		}
 	}
 	
 	.timer-button#stop {
-		border: 1px solid darkred;
-		background-color: rgba(darkred, .2);
-		color: darken(darkred, 10%);
-		margin-left: 50px;
+		border-color: rgba(darkred, .3);
+		background-color: rgba(darkred, .1);
+		color: darken(darkred, 0%);
+		margin-left: 30px;
+		background-image: url(../pause.png);
 	}
 	
 	.timer-button#start {
-		margin-left: 150px;
+		margin-left: 250px;
 	}
 	
 	.timer-button.reset#stop {
-		border-color: black;
-		background-color: rgba(black, .2);
-		color: black;
+		border-color: rgba(black, .5);
+		background-color: rgba(black, .1);
+		color: #666;
+		background-image: url(../stop.png);
 	}
 }
 

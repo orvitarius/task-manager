@@ -24,7 +24,7 @@ $(document).ready(function() {
 	
 	function startclock() {
 		$('#stop').removeClass('reset');
-		$('#stop').val('Stop');	
+		//$('#stop').val('Stop');	
 		clocker = setInterval(function() {
 			countClock(timer);
 		}, 1000);
@@ -40,7 +40,7 @@ $(document).ready(function() {
 			var container = $('#rellotge1');
 			reiniciarRellotge(container);
 		} else {
-			$(this).val('Reset');
+			//$(this).val('Reset');
 			$(this).addClass('reset');
 		}
 		
@@ -60,7 +60,7 @@ $(document).ready(function() {
 		timer.hours = 0;
 		clear(true, true, true, container);
 		$('#stop').addClass('reset');
-		$('#stop').val('Reset');
+		//$('#stop').val('Reset');
 	}
 	
 		

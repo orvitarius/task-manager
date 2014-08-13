@@ -93,8 +93,8 @@
 					
 				</div>
 				
-				<input type="button" name="start" class="timer-button" id="start" value="Start" />
-				<input type="button" name="stop" class="timer-button reset" id="stop" value="Reset" />
+				<input type="button" name="start" class="timer-button" id="start" value="" />
+				<input type="button" name="stop" class="timer-button reset" id="stop" value="" />
 				
 				<input class="data" style="display:none" value="11/08/2014" />
 				
