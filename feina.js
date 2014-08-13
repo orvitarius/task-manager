@@ -1,12 +1,112 @@
 $(document).ready(function() {
 	
-	var timer = clock;
+	/**
+	 * -------------------------
+	 * FUNCIONAMENT DEL RELLOTGE
+	 * -------------------------
+	 */
 	
-	timer.secondUp();
-	timer.setClock();
-	//timer.start();
+	/**
+	 * Netejar agulla marcada amb TRUE
+	 *
+	 */
+	 
+	function clearAgulla(sec, min, hour, container, separacio) {
+		var posicioMarcador = separacio + 'px';
+		if (sec) {
+			container.find('.segons').find('.sec').remove();
+			container.find('.segons').find('.end').css('left', posicioMarcador);
+		}
+		if (min) {
+			container.find('.minuts').find('.min').remove();
+			container.find('.minuts').find('.end').css('left', posicioMarcador);
+		}
+		if (hour) {
+			container.find('.hores').find('.hor').remove();
+			container.find('.hores').find('.end').css('left', posicioMarcador);
+		}
+	}
 	
-	function countClock(timer) {
+	/**
+	 * Imprimir ticks de les agulles
+	 *
+	 */
+	  
+	function printTick(rellotgeID, agulla, posiciotick, separacio) {
+		var $rellotge = $('#'+rellotgeID);
+		var classagulla = '.'+agulla;
+		var posicioMarcador = posiciotick + 2 * separacio;
+		var classtick = '';
+		var posiciotick = posiciotick + 'px';
+			posicioMarcador = posicioMarcador + 'px';
+			
+		if (agulla == 'segons') {
+			classtick = 'sec';
+		} else if (agulla == 'minuts') {
+			classtick = 'min';
+		} else if (agulla == 'hores') {
+			classtick = 'hor';
+		}
+		
+		$rellotge.find(classagulla).find('.end').before('<div class="tick ' + classtick + '" style="left:' + posiciotick + '"></div>');
+		$rellotge.find(classagulla).find('.end').css('left', posicioMarcador);	
+	}
+
+	function printTickSegon(rellotgeID, separacio, timer) {
+		var left = timer.seconds * separacio;
+		var $rellotge = $('#'+rellotgeID);
+		if (timer.seconds == 0 ) {
+			clearAgulla(true,false,false, $rellotge);
+			left = 0;
+		}
+		if (timer.seconds > 0) {
+			printTick(rellotgeID, 'segons', left, separacio)
+		}
+		return false;
+	}
+		
+	function printTickMinut(rellotgeID, separacio, timer) {
+		var left = timer.minutes * separacio;
+		var $rellotge = $('#'+rellotgeID);
+		if (timer.minutes == 0 ) {
+			clearAgulla(false,true,false, $rellotge);
+			left = 0;
+		}
+		if (timer.minutes > 0) {
+			printTick(rellotgeID, 'minuts', left, separacio);
+		}
+		return false;
+	}
+	
+	function printTickHora(rellotgeID, separacio, timer) {
+		var left = timer.hours * separacio;
+		var $rellotge = $('#'+rellotgeID);
+		if (timer.hours == 0 ) {
+			clearAgulla(false,false,true, $rellotge);
+			left = 0;
+		}
+		if (timer.hours > 0) {
+			printTick(rellotgeID, 'hores', left, separacio);
+		}
+		return false;
+	}
+	
+	/**
+	 * Numero en dos digits
+	 *
+	 */	
+	
+	function dosdigits(num) {
+		var c = parseInt(num, 10);
+		return (c<10) ? "0"+c : c;
+	}
+	
+	/**
+	 * Comptar un segon del rellotge
+	 *
+	 */
+	 
+	function countClock(timer, separacio) {
 		timer.secondUp();
 		var sec = dosdigits(timer.seconds);
 			min = dosdigits(timer.minutes);
@@ -14,43 +114,33 @@ $(document).ready(function() {
 		$('#secs').val(sec);
 		$('#mins').val(min);
 		$('#hores').val(hor);
-		printSegon($('.segons'));
+		printTickSegon(containerID, 7, timer);
 		if (timer.seconds == 0) {
-			printMinut($('.minuts'));
+			printTickMinut(containerID, separacio, timer);
 		}
-		printHora($('.hores'));
+		if (timer.minutes == 0) {
+			printTickHora(containerID, separacio, timer)
+		}
 		return false;
 	};
 	
+	/**
+	 * Start
+	 *
+	 */
+	 
 	function startclock() {
-		$('#stop').removeClass('reset');
-		//$('#stop').val('Stop');	
 		clocker = setInterval(function() {
-			countClock(timer);
+			countClock(timer, separacio);
 		}, 1000);
 		return clocker;
 	}
 	
-	
-	$('#stop').click(function() {
-
-		clearInterval(clocker);
-		
-		if ($(this).hasClass('reset')) {
-			var container = $('#rellotge1');
-			reiniciarRellotge(container);
-		} else {
-			//$(this).val('Reset');
-			$(this).addClass('reset');
-		}
-		
-		//$(this).toggleClass('reset');
-	});
-	
-	$('#start').click(function() {
-		startclock();
-	});
-	
+	/**
+	 * Reiniciar rellotge
+	 *
+	 */
+	 
 	function reiniciarRellotge(container) {
 		$('#secs').val('00');
 		$('#mins').val('00');
@@ -58,151 +148,131 @@ $(document).ready(function() {
 		timer.seconds = 0;
 		timer.minutes = 0;
 		timer.hours = 0;
-		clear(true, true, true, container);
+		clearAgulla(true, true, true, container, separacio);
 		$('#stop').addClass('reset');
-		//$('#stop').val('Reset');
+		$('.time').removeClass('paused');
+		$('.time').removeClass('running');
+		return false;
 	}
-	
-		
-	//$('#secs').click(function() {
-	//	clearInterval(clocker);
-	//});
-	
-	//startclock();
-	
-	function printSegon(container) {
-		var left = timer.seconds * 7;
-			leftend = left + 14;
-		var supercontainer = $('#rellotge1');
-		if (timer.seconds == 0 ) {
-			clear(true,false,false, supercontainer);
-			left = 0;
-			leftend = 0;
+
+	/**
+	 * Funcions botons rellotge
+	 *
+	 */
+	 
+	$('#stop').click(function() {
+		clearInterval(clocker);
+		if ($(this).hasClass('reset')) {
+			var container = $('#'+containerID);
+			reiniciarRellotge(container);
+		} else {
+			$(this).addClass('reset');
+			$('.time').addClass('paused');
+			$('.time').removeClass('running');
 		}
-		left = left + 'px';
-		if (timer.seconds > 0) {
-			container.find('.end').before('<div class="tick sec" style="left:' + left + '"></div>');
-			container.find('.end').css('left', leftend);
-		}
-	}
-	
-	function printMinut(container) {
-		var left = timer.minutes * 7;
-			leftend = left + 14;
-		var supercontainer = $('#rellotge1');
-		if (timer.minutes == 0 ) {
-			clear(false,true,false, supercontainer);
-			left = 0;
-		}
-		left = left + 'px';
-		if (timer.minutes > 0) {
-			//container.append('<div class="tick min" style="left:' + left + '"></div>');
-			container.find('.end').before('<div class="tick min" style="left:' + left + '"></div>');
-			container.find('.end').css('left', leftend);
-		}
-	}
-	
-	function printHora(container) {
-		var left = timer.hours * 7;
-			leftend = left + 14;
-		left = left + 'px';
-		if (timer.hours > 0) {
-			container.append('<div class="tick hor" style="left:' + left + '"></div>');
-		}
-	}
-	
-	function clear(sec, min, hour, container) {
-		if (sec) {
-			//console.log(container);
-			container.find('.segons').find('.sec').remove();
-			container.find('.segons').find('.end').css('left', '7px');
-		}
-		
-		if (min) {
-			container.find('.minuts').find('.min').remove();
-			container.find('.minuts').find('.end').css('left', '7px');
-		}
-		
-		if (hour) {
-			container.find('.hores').find('.hor').remove();
-			container.find('.hores').find('.end').css('left', '7px');
-		}
-		
-		
-	}
-	
-	function dosdigits(num) {
-		var c = parseInt(num, 10);
-		return (c<10) ? "0"+c : c;
-	}
-	
-	
-	
-	
-	
-	
-	
-	//Taula
-	
-	totalSeleccio = 0;
-	
-	$('#sessions-table').find('td').click(function() {
-		$(this).parent('tr').toggleClass('seleccionada');
-		totalTempsSeleccio();
-		console.log(totalSeleccio);
-		$('.total').find('.temps').html(minutsAtemps(totalSeleccio));
+		return false;
 	});
 	
+	$('#start').click(function() {
+		startclock();
+		$('#stop').removeClass('reset');
+		$('.time').addClass('running');
+		$('.time').removeClass('paused');
+	});
+	
+		
+	/*
+	 * Configuracio rellotge
+	 *
+	 */
+		
+	var separacio = 7;
+	var containerID = 'rellotge1';
+	var timer = clock; // Variable de tipus clock (clock.js)
+	
+	
+	
+	
+	
+	
+	
+	
+	/**
+	 * --------------------------
+	 * TAULA DE SESSIONS DE FEINA
+	 * --------------------------
+	 */
+	 
+	/**
+	 * Converors minuts <--> XXh YYm
+	 *
+	 */
+	
+	function string2minuts(temps) {
+		var tempsm = temps.split('h');
+		var hores = tempsm[0] * 60;
+		var mins  = tempsm[1].split(' ');
+			mins  = mins[1].split('m');
+			mins  = mins[0] * 1;
+		return hores + mins; 
+	}
+	
+	function minuts2string(minuts) {
+		var h = Math.floor(minuts / 60);
+			m = minuts % 60;
+		
+			temps = h+"h "+m+"m";
+		return temps;
+	}
+	
+	/**
+	 * Total temps linies seleccionades
+	 *
+	 */
+	 
 	function totalTempsSeleccio() {
-		//console.log('ttS');
 		var temps = 0;
 		totalSeleccio = 0;
 		$('#sessions-table').find('.seleccionada').each(function() {
-			console.log('sel');
 			temps = $(this).find('.temps').html();
-			temps = tempsAMinuts(temps);
+			temps = string2minuts(temps);
 			totalSeleccio += temps;
 		});
 		if (temps == 0) {
 			totalSeleccio = 0;
 			$('#sessions-table').find('.temps').each(function() {
 				temps = $(this).html();
-				temps = tempsAMinuts(temps);
+				temps = string2minuts(temps);
 				totalSeleccio += temps;
 			});
 		}
 	}
 	
-	function tempsAMinuts(temps) {
-		var tempsm = temps.split('h');
-		var hores = tempsm[0] * 60;
-		var mins  = tempsm[1].split(' ');
-			mins  = mins[1].split('m');
-			mins  = mins[0] * 1;
-			
-		return hores + mins; 
-	}
 	
-	function minutsAtemps(minuts) {
-		var h = Math.floor(minuts / 60);
-			m = minuts % 60;
-		
-			temps = h+"h "+m+"m";
-			return temps;
-	}
+	/**
+	 * Seleccionar linies
+	 *
+	 */
+	 
+	totalSeleccio = 0;
+	
+	$('#sessions-table').find('td').click(function() {
+		$(this).parent('tr').toggleClass('seleccionada');
+		totalTempsSeleccio();
+		$('.total').find('.temps').html(minuts2string(totalSeleccio));
+	});
 	
 	
-	
+	/**
+	 * Filtrar comentaris
+	 *
+	 */
 	
 	$('#commentsearch').click(function() {
-		console.log('kd');
-		//var that = $(this);
-		//3classToggle(that, 'coment-icon-blank', 'coment-icon-green', 'coment-icon-red');
 		if($(this).hasClass('coment-icon-blank')) {
 			$(this).removeClass('coment-icon-blank');
 			$(this).addClass('coment-icon-green');
 			$('#sessions-table').find('.no-comen').parent('tr').css('visibility','hidden');
-			//$('#sessions-table').find('.no-comen').parent('tr').find('td').css('height','0');
 			return true;
 		}
 		if($(this).hasClass('coment-icon-green')) {
@@ -216,23 +286,23 @@ $(document).ready(function() {
 			$(this).removeClass('coment-icon-red');
 			$(this).addClass('coment-icon-blank');
 			$('#sessions-table').find('tr').css('visibility', 'visible');
-			//$('#sessions-table').find('tr').find('td').css('height', '30px');
 			return true;
 		}
 	});
 	
 	
-	
+	/**
+	 * Veure comentaris TODO --> ajustar posicio
+	 *
+	 */
 	
 	$('.coment-icon').hover(function() {
-		//console.log('mouse');
 		var parent = $(this).parent('.comen');
 		var	top = $(this).offset();
 			top = top.bottom;
 			console.log(top);
 		if (!parent.hasClass('no-comen')) {
 			var text = parent.find('p').text();
-			//console.log(text);
 			$('.popupcomment').css('top', top);
 			$('.popupcomment').find('p').text(text);
 			$('.popupcomment').fadeIn();

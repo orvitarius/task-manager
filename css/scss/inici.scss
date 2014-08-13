@@ -13,7 +13,7 @@ html {
 }
 
 body {
-	background-image: url(../cork.jpg);
+	background-image: url(../images/cork.jpg);
 	@include background-image(repeat-y, 100% auto, 0 0);
 }
 
@@ -264,7 +264,7 @@ body {
 		background-color: #efefef;
 		margin-bottom: 15px;
 		border-radius: 0;
-		background-image: url(../dropdown.png);
+		background-image: url(../images/dropdown.png);
 		color: darkred;
 		@include background-image(no-repeat, 15px 10px, 275px center);
 	}
@@ -395,10 +395,10 @@ body {
 	height: 80px;
 	z-index: 2000;
 	//background-color: darkred;
-	background-image: url(../bin.png);
+	background-image: url(../images/bin.png);
 	@include background-image(no-repeat, 100% 50px, center bottom);
 	
 	&:hover {
-		background-image: url(../bin-open.png);
+		background-image: url(../images/bin-open.png);
 	}
 }

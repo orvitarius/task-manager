@@ -28,7 +28,7 @@
         margin-top: 2px; }
 
 .feina-sub.sub1 {
-  background-image: url(../corner1.png);
+  background-image: url(../images/corner1.png);
   background-repeat: no-repeat;
   background-size: 40px 40px;
   background-position: left bottom; }
@@ -132,14 +132,7 @@
 #nova-feina .time {
   width: 128px;
   display: block;
-  margin: 20px auto 0;
-  /*.time-s {
-  	color: yellowgreen;
-  }
-  
-  .time-m {
-  	color: darkred;
-  }*/ }
+  margin: 20px auto 0; }
   #nova-feina .time label {
     font-size: 20pt;
     color: #c0c0c0; }
@@ -148,6 +141,10 @@
     font-size: 20pt;
     background-color: transparent;
     color: #b0b0b0; }
+#nova-feina .time.running label, #nova-feina .time.running input {
+  color: #a4d247; }
+#nova-feina .time.paused label, #nova-feina .time.paused input {
+  color: #be0000; }
 #nova-feina .timer-button {
   width: 40px;
   height: 40px;
@@ -160,7 +157,7 @@
   margin-bottom: 60px;
   cursor: pointer;
   opacity: .5;
-  background-image: url(../play.png);
+  background-image: url(../images/play.png);
   background-repeat: no-repeat;
   background-size: auto 50%;
   background-position: center center;
@@ -177,14 +174,14 @@
   background-color: rgba(139, 0, 0, 0.1);
   color: darkred;
   margin-left: 30px;
-  background-image: url(../pause.png); }
+  background-image: url(../images/pause.png); }
 #nova-feina .timer-button#start {
   margin-left: 250px; }
 #nova-feina .timer-button.reset#stop {
   border-color: rgba(0, 0, 0, 0.5);
   background-color: rgba(0, 0, 0, 0.1);
   color: #666;
-  background-image: url(../stop.png); }
+  background-image: url(../images/stop.png); }
 #nova-feina .boto-form {
   -webkit-appearance: none;
   width: 85%;
@@ -236,16 +233,16 @@
           width: 30px;
           height: 30px;
           cursor: pointer;
-          background-image: url(../comment-green.png);
+          background-image: url(../images/comment-green.png);
           background-repeat: no-repeat;
           background-size: 100% 100%;
           background-position: 0 0; }
       .feina-sub.sub2 .fixedtable table .seleccionada td {
         color: #8db3d3; }
       .feina-sub.sub2 .fixedtable table .seleccionada .comen .coment-icon {
-        background-image: url(../comment-blue.png); }
+        background-image: url(../images/comment-blue.png); }
       .feina-sub.sub2 .fixedtable table .no-comen .coment-icon {
-        background-image: url(../comment-red.png); }
+        background-image: url(../images/comment-red.png); }
   .feina-sub.sub2 .total {
     position: fixed;
     bottom: 50px;
@@ -269,11 +266,11 @@
         background-size: 100% 100%;
         background-position: 0 0; }
       .feina-sub.sub2 .total table .comen .coment-icon-blank {
-        background-image: url(../comment-blank.png); }
+        background-image: url(../images/comment-blank.png); }
       .feina-sub.sub2 .total table .comen .coment-icon-green {
-        background-image: url(../comment-green.png); }
+        background-image: url(../images/comment-green.png); }
       .feina-sub.sub2 .total table .comen .coment-icon-red {
-        background-image: url(../comment-red.png); }
+        background-image: url(../images/comment-red.png); }
   .feina-sub.sub2 .popupcomment {
     position: absolute;
     width: 320px;

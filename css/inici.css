@@ -8,7 +8,7 @@ html {
   font-weight: 300; }
 
 body {
-  background-image: url(../cork.jpg);
+  background-image: url(../images/cork.jpg);
   background-repeat: repeat-y;
   background-size: 100% auto;
   background-position: 0 0; }
@@ -194,7 +194,7 @@ body {
     background-color: #efefef;
     margin-bottom: 15px;
     border-radius: 0;
-    background-image: url(../dropdown.png);
+    background-image: url(../images/dropdown.png);
     color: darkred;
     background-repeat: no-repeat;
     background-size: 15px 10px;
@@ -276,9 +276,9 @@ body {
   width: 40px;
   height: 80px;
   z-index: 2000;
-  background-image: url(../bin.png);
+  background-image: url(../images/bin.png);
   background-repeat: no-repeat;
   background-size: 100% 50px;
   background-position: center bottom; }
   #paperera:hover {
-    background-image: url(../bin-open.png); }
+    background-image: url(../images/bin-open.png); }

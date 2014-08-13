@@ -147,7 +147,7 @@
 	</section>
 	
 	
-	<script src="menu-superior.js"></script>
+	<script src="index.js"></script>
 	<script src="clock.js"></script>
 	<script src="feina.js"></script>
 	

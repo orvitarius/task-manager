@@ -1,5 +1,6 @@
 @import 'mixins.scss';
 
+//BLOC DE FEINA I SUBBLOCS
 .feina-contingut {
 	width: 95%;
 	min-height: 600px;
@@ -35,9 +36,8 @@
 }
 
 
-
 .feina-sub.sub1 {
-	background-image: url(../corner1.png);
+	background-image: url(../images/corner1.png);
 	@include background-image(no-repeat, 40px 40px, left bottom);
 }
 
@@ -45,7 +45,7 @@
 
 
 
-//clock
+//RELLOTGE
 .rellotge {
 	width: 462px;
 	height: 80px;
@@ -53,7 +53,6 @@
 	margin: 10px 70px 20px;
 	position: relative;
 	overflow: auto;
-	//border: 1px solid darkred;
 	
 	label {
 		float: left;
@@ -71,7 +70,6 @@
 	
 	.segons-label {
 		background-color: yellowgreen;
-		
 	}
 	.minuts-label {
 		background-color: darkred;
@@ -85,12 +83,8 @@
 		height: 20px;
 		float: left;
 		margin: 5px 0 0;
-		//background-color: ivory;
 		position: relative;
-		//border-left: 1px solid yellowgreen;
 		border-right: 5px solid yellowgreen;
-		//background-color: rgba(yellowgreen, .1);
-		//@include box-shadow(1px, 2px, 10px, rgba(30,30,30,.2), true);
 		@include border-radius(3px);
 		
 		.tick {
@@ -100,7 +94,6 @@
 			background-color: yellowgreen;
 			top: 7px;
 			opacity: .3;
-			//@include border-radius(10px);
 		}
 		
 		.min {
@@ -139,7 +132,7 @@
 
 
 
-
+//BLOC NOVA FEINA
 #nova-feina {
 	
 	input {
@@ -166,11 +159,11 @@
 		line-height: 25px;
 		display: block;
 		resize: none;
-		background-image: -webkit-linear-gradient(antiquewhite 95%, lighten(#a0a0a0, 5%) 100%);
+		//Linies de fons
+		background-image: -webkit-linear-gradient(antiquewhite 95%, lighten(#a0a0a0, 5%) 100%); 
 		@include background-image(repeat-y, 100% 25px, 0 0);
 		
 		&::-webkit-input-placeholder {
-			//font-size: 11pt;
 			color: darkred;
    		}
 	}
@@ -189,21 +182,24 @@
 			width: 30px;
 			font-size: 20pt;
 			background-color: transparent;
-			//color: lighten(steelblue, 20%);
 			color: #b0b0b0;
 		}
-		
-		/*.time-s {
-			color: yellowgreen;
+	}
+	
+	.time.running {
+		label, input {
+			color: lighten(yellowgreen, 5%);
 		}
-		
-		.time-m {
-			color: darkred;
-		}*/
+	}
+	
+	.time.paused {
+		label, input {
+			color: lighten(darkred, 10%);
+		}
 	}
 	
 	
-	//botons rellotge
+	//Botons rellotge
 	.timer-button {
 		width: 40px;
 		height: 40px;
@@ -212,12 +208,11 @@
 		float: left;
 		border: 1px solid rgba(yellowgreen, .8);
 		background-color: rgba(yellowgreen, .1);
-		//background-color: transparent;
 		color: darken(yellowgreen, 5%);
 		margin-bottom: 60px;
 		cursor: pointer;
 		opacity: .5;
-		background-image: url(../play.png);
+		background-image: url(../images/play.png);
 		@include background-image(no-repeat, auto 50%, center center);
 		@include border-radius(50%);
 		
@@ -235,7 +230,7 @@
 		background-color: rgba(darkred, .1);
 		color: darken(darkred, 0%);
 		margin-left: 30px;
-		background-image: url(../pause.png);
+		background-image: url(../images/pause.png);
 	}
 	
 	.timer-button#start {
@@ -246,12 +241,12 @@
 		border-color: rgba(black, .5);
 		background-color: rgba(black, .1);
 		color: #666;
-		background-image: url(../stop.png);
+		background-image: url(../images/stop.png);
 	}
 	
 	
 	
-	//boto form
+	//Boto form
 	.boto-form {
 		-webkit-appearance: none;
 		width: 85%;
@@ -259,7 +254,6 @@
 		display: block;
 		height: 30px;
 		border: 1px solid steelblue;
-		//background-color: transparent;
 		color: steelblue;
 		font-size: 12pt;
 		background-color: rgba(steelblue, .1);
@@ -277,7 +271,6 @@
 	.feina-sub-titol {
 		color: yellowgreen;
 		background-color: transparent;
-		//text-align: center;
 	}
 	
 	.fixedtable {
@@ -299,7 +292,6 @@
 			border-collapse: collapse;
 		
 			td {
-				//background-color: ivory;
 				height: 40px;
 				border-bottom: 1px solid #e0e0e0;
 				border-top: none;
@@ -315,7 +307,6 @@
 			
 			.comen {
 				width: 80px;
-				//background-color: yellowgreen;
 				color: transparent;
 				overflow: hidden;
 				
@@ -329,27 +320,26 @@
 					width: 30px;
 					height: 30px;
 					cursor: pointer;
-					background-image: url(../comment-green.png);
+					background-image: url(../images/comment-green.png);
 					@include background-image(no-repeat, 100% 100%, 0 0);	
 				}
 			}
 			
 			.seleccionada {
-				
 				td {
 					color: lighten(steelblue, 20%);
 				}
 				
 				.comen {
 					.coment-icon {
-						background-image: url(../comment-blue.png);
+						background-image: url(../images/comment-blue.png);
 					}
 				}
 			}
 			
 			.no-comen {
 				.coment-icon {
-					background-image: url(../comment-red.png);
+					background-image: url(../images/comment-red.png);
 				}
 			}
 		}
@@ -375,26 +365,24 @@
 		table .comen {
 			background-color: transparent;
 			width: 80px;
-			
-			
+						
 			.coment-icon-blank, .coment-icon-green, .coment-icon-red {
 				display: block;
 				width: 30px;
 				height: 30px;
-				//background-image: url(../comment-green.png);
 				@include background-image(no-repeat, 100% 100%, 0 0);
 			}
 			
 			.coment-icon-blank {
-				background-image: url(../comment-blank.png);
+				background-image: url(../images/comment-blank.png);
 			}
 			
 			.coment-icon-green {
-				background-image: url(../comment-green.png);
+				background-image: url(../images/comment-green.png);
 			}
 			
 			.coment-icon-red {
-				background-image: url(../comment-red.png);
+				background-image: url(../images/comment-red.png);
 			}
 		}
 	}
@@ -408,7 +396,6 @@
 		background-color: ivory;
 		top: 180px;
 		left: 120px;
-		//transition: all 1s ease;
 		display: none;
 		padding: 10px;
 		border: 1px solid yellowgreen;
