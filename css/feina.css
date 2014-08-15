@@ -194,6 +194,7 @@
   background-color: rgba(70, 130, 180, 0.1);
   background-image: url(../images/save.png);
   opacity: .5;
+  cursor: pointer;
   background-repeat: no-repeat;
   background-size: auto 35px;
   background-position: center 8px;
@@ -284,15 +285,20 @@
         background-image: url(../images/comment-red.png); }
   .feina-sub.sub2 .popupcomment {
     position: absolute;
-    width: 320px;
-    height: 200px;
+    width: 400px;
+    height: 125px;
     background-color: ivory;
     top: 180px;
-    left: 120px;
+    left: 60px;
     display: none;
     padding: 10px;
-    border: 1px solid yellowgreen;
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    background-clip: padding-box; }
+    border-top: 5px solid yellowgreen;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    background-clip: padding-box;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    -webkit-box-shadow: 0px 2px 3px #555555;
+    -moz-box-shadow: 0px 2px 3px #555555;
+    box-shadow: 0px 2px 3px #555555; }

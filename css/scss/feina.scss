@@ -259,6 +259,7 @@
 		background-color: rgba(steelblue, .1);
 		background-image: url(../images/save.png);
 		opacity: .5;
+		cursor: pointer;
 		@include background-image(no-repeat, auto 35px, center 8px);
 		@include border-radius(50%);
 		
@@ -399,15 +400,18 @@
 	//comentari
 	.popupcomment {
 		position: absolute;
-		width: 320px;
-		height: 200px;
+		width: 400px;
+		height: 125px;
 		background-color: ivory;
 		top: 180px;
-		left: 120px;
+		left: 60px;
 		display: none;
 		padding: 10px;
-		border: 1px solid yellowgreen;
-		@include border-radius(10px);
+		border-top: 5px solid yellowgreen;
+		@include border-radius(5px);
+		border-top-left-radius: 0;
+		border-top-right-radius: 0;
+		@include box-shadow(2px, 0px, 3px, #555);
 	}
 	
 }

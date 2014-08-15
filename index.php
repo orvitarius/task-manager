@@ -122,13 +122,19 @@
 	
 	<!-- IMPRIMIT TASQUES -->
 	
-	<section class="tasques feina-hidden">
+	<section class="tasques <?php echo ($tascaActiva == '') ? 'feina-hidden' : '' ?>">
 	
 		<?php
 		$tasques = "SELECT * FROM tasques WHERE id_projecte = ".$id_proj['id_projecte']." ORDER BY ordre ASC";
 		$tasques = $db->query($tasques);
 		while($tasca = $db->fetch_array($tasques)) {
-			echo '<div draggable="true" id="'.$tasca['id_tasca'].'" class="tasca '.$arrayPrioritats[$tasca['prioritat']].' '.$arrayEstats[$tasca['estat']].' '.$arraySubprojects[$tasca['id_subprojecte']].'" >';
+			if ($tasca['id_tasca'] == $tascaActiva) {
+				$activa = 'seleccionada';
+			} else {
+				$activa = '';
+			}
+			
+			echo '<div draggable="true" id="'.$tasca['id_tasca'].'" class="tasca '.$arrayPrioritats[$tasca['prioritat']].' '.$arrayEstats[$tasca['estat']].' '.$arraySubprojects[$tasca['id_subprojecte']].' '.$activa.'" >';
 			echo '<span class="tasca-titol" id="'.$tasca['id_tasca'].'">'.$tasca['nom'].'</span>';
 			echo '<p class="tasca-descr">'.$tasca['descripcio'].'</p>';
 			echo '</div>';
@@ -142,7 +148,7 @@
 	
 	<!-- FORMULARI -->
 	
-	<section class="feina hidden">
+	<section class="feina <?php echo ($tascaActiva == '') ? 'hidden' : '' ?>">
 	<div id="feina-sidebar">
 	</div>
 	<form id="tascaform" method="get" action="querytasques.php">
@@ -195,8 +201,8 @@
 		<input type="text" class="datepicker" id="datalimit" name="datalimit" value="<?php echo $dli; ?>">
 	
 		
-		<button class="buttonform one" name="afegirTasca"   value="1" title=""  id="buttonForm1" >+</button>
-		<button class="buttonform two-two" name="cancelar" value="1" title=""id="buttonForm2" >x</button>
+		<button class="buttonform one" name="afegirTasca"   value="1" title=""  id="buttonForm1" ></button>
+		<button class="buttonform two-two" name="cancelar" value="1" title=""id="buttonForm2" ></button>
 	
 	</form>
 	</section>
@@ -211,20 +217,29 @@
 		<form id="filtres" method="get" action="index.php">
 			
 			<?php foreach($arraySubprojects as $index=>$subproject) {
-				echo '<label class="filtres-subs">'.$subproject.'</label>';
-				echo '<input type="checkbox" name="sub-'.$index.'" value="1" checked="true" id="sub-'.$index.'" />';
+				echo '<label class="filtrelabel filtres-subs">'.$subproject.'</label>';
+				echo '<div class="checker checker-subs">';
+				echo '<label for="sub-'.$index.'"></label>';
+				echo '<input type="checkbox" name="sub-'.$index.'" value="1" checked="" id="sub-'.$index.'" />';
+				echo '</div>';
 			}
 			?>
 			
 			<?php foreach($arrayEstats as $index=>$estat) {
-				echo '<label class="filtres-est">'.$estat.'</label>';
-				echo '<input type="checkbox" name="est-'.$index.'" value="1" checked="true" id="est-'.$index.'" />';
+				echo '<label class="filtrelabel filtres-est">'.$estat.'</label>';
+				echo '<div class="checker checker-est">';
+				echo '<label for="est-'.$index.'"></label>';
+				echo '<input type="checkbox" name="est-'.$index.'" value="1" checked="" id="est-'.$index.'" />';
+				echo '</div>';
 			}
 			?>
 			
 			<?php foreach($arrayPrioritatsNom as $index=>$prior) {
-				echo '<label class="filtres-prior">'.$prior.'</label>';
-				echo '<input type="checkbox" name="pri-'.$index.'" value="1" checked="true" id="pri-'.$index.'" />';
+				echo '<label class="filtrelabel filtres-prior">'.$prior.'</label>';
+				echo '<div class="checker chekcer-prior">';
+				echo '<label for="pri-'.$index.'"></label>';
+				echo '<input type="checkbox" name="pri-'.$index.'" value="1" checked="" id="pri-'.$index.'" />';
+				echo '</div>';
 			}
 			?>
 		</form>

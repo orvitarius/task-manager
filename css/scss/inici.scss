@@ -13,6 +13,7 @@ html {
 }
 
 body {
+	overflow: auto;
 	background-image: url(../images/cork.jpg);
 	@include background-image(repeat-y, 100% auto, 0 0);
 }
@@ -113,6 +114,7 @@ body {
 	margin: 50px 0 50px 20px;
 	z-index: 1;
 	position: relative;
+	transition: all 1s ease;
 	
 	.tasca {
 		float: left;
@@ -155,12 +157,13 @@ body {
 		}
 	}
 	
-	.activada {
-		outline: 5px solid goldenrod;
+	.seleccionada {
+		outline: 5px solid rgba(steelblue, .8);
 	}
 	
 	.Acabada .tasca-titol {
 		text-decoration: line-through;
+		color: darkred;
 	}
 	
 	.Inactiva {
@@ -184,27 +187,39 @@ body {
 	width: 300px;
 	margin: 60px 0 50px 0;
 	padding: 0;
-	background-color: darken(steelblue, 20%);
+	background-color: darken(antiquewhite, 10%);
 	min-height: 525px;
-	border-top-left-radius: 20px;
-	border-bottom-left-radius: 20px;
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
 	position: relative;
+	transition: width 1s ease;
+	@include box-shadow(3px, 1px, 6px, #555);
 	//@include border-radius(10px);
 	//background-image: url(../cork-feina.png);
 	
 	* {
 		display: block;
+		transition: width 1s ease;
 	}	
+	
+	input, label, select {
+		width: 100%;
+	}
 	
 	#feina-sidebar {
 		height: 525px;
 		width: 30px;
-		background-color: darken(steelblue, 5%);
+		background-color: darken(steelblue, 0%);
 		float: left;
-		border-top-left-radius: 20px;
-		border-bottom-left-radius: 20px;
+		border-top-left-radius: 0px;
+		border-bottom-left-radius: 0px;
 		position: relative;
-
+		opacity: .8;
+		cursor: pointer;
+		
+		&:hover {
+			opacity: 1;
+		}
 	}
 	
 	form {
@@ -220,14 +235,14 @@ body {
 		font-size: 18pt;
 		font-family: helvetica;
 		font-weight: 100;
-		color: ivory;
+		color: black;
 		background-color: transparent;
 		border: none;
 		border-bottom: 2px solid darkred;
 		text-indent: 5px;
 		
 		&::-webkit-input-placeholder {
-			color: ivory;
+			color: black;
    		}	
 	}
 	
@@ -235,12 +250,14 @@ body {
 		width: 100%;
 		height: 100px;
 		box-sizing: border-box;
-		margin: 10px 0;
-		background-color: rgba(#efefef, 1);
-		border: 1px solid #a0a0a0;
+		margin: 20px 0;
+		background-color: darken(antiquewhite, 20%);
+		//border: 1px solid #a0a0a0;
+		border: none;
 		font-size: 12pt;
 		font-weight: 100;
 		resize: none;
+		text-indent: 5px;
 		
 		&::-webkit-input-placeholder {
 			color: darkred;
@@ -251,7 +268,7 @@ body {
 		font-weight: 100;
 		display: block;	
 		font-size: 13pt;
-		color: ivory;
+		color: black;
 	}
 	
 	select {
@@ -261,12 +278,13 @@ body {
 		font-weight: 100;
 		min-height: 30px;
 		text-indent: 5px;
-		background-color: #efefef;
+		background-color: darken(antiquewhite, 20%);
 		margin-bottom: 15px;
 		border-radius: 0;
+		border: none;
 		background-image: url(../images/dropdown.png);
 		color: darkred;
-		@include background-image(no-repeat, 15px 10px, 275px center);
+		@include background-image(no-repeat, 15px 12px, 190px center);
 	}
 	
 	.floater {
@@ -276,13 +294,14 @@ body {
 	}
 	
 	#datalimit {
-		width: 200px;
-		height: 20px;
+		width: 100%;
+		height: 30px;
 		margin: 0 0 20px 0px;
 		font-size: 12pt;
 		text-align: center;
-		background-color: #efefef;
-		border: 1px solid #a0a0a0;
+		background-color: darken(antiquewhite, 20%);
+		//border: 1px solid #a0a0a0;
+		border: none;
 	}
 	
 	
@@ -290,53 +309,69 @@ body {
 	
 	//Butons
 	.buttonform {
-		width: 60px;
-		height: 40px;
+		width: 50px;
+		height: 50px;
 		-webkit-appearance: none;
 		border: none;
-		color: ivory;
+		color: yellowgreen;
 		font-size: 40px;
 		line-height: 0px;
 		padding: 0;
-		background-color: steelblue;
-		//border: 2px solid yellowgreen;
-		//margin: 10px 0 0;
+		border: 1px solid rgba(steelblue, .8);
+		background-color: rgba(steelblue, .1);
 		cursor: pointer;
-		//@include border-radius(50%);
+		opacity: .6;
+		background-image: url(../images/save.png);
+		@include background-image(no-repeat, auto 80%, center center);
+		@include border-radius(50%);
+		
+		&:hover {
+			opacity: 1;
+		}
 	}
 	
 	.one {
-		margin: 20px 0 0 0;
-		width: 100%;
+		margin: 0px 0 0 80px;
 	}
 	
 		
 	.two-one {
-		margin-left: 0;
-		width: 100px;
+		margin-left: 40px;
 		float: left;
+		background-image: url(../images/update.png);
+		@include background-image(no-repeat, auto 80%, center center);
 	}
 		
 	.two-two {
-		margin-top: 20px;
-		margin-right: 0;
-		width: 100px;
+		margin-top: 0px;
+		margin-right: 40px;
 		float: right;
+		border: 1px solid rgba(darkred, .5);
+		background-color: rgba(darkred, .1);
+		background-image: url(../images/bin-red.png);
+		@include background-image(no-repeat, auto 70%, center center);
 	}
 	
 }
 
 .feina.hidden {
-	right: -0px;
-	width: 30px;
+	//right: -270px;
+	width: 35px;
 	overflow: hidden;
 	
 	* {
-		display: none;
+		//display: none;
+	}
+	
+	* {
+		width: 0;
+		margin: 0;
+		transition: width 1s ease;
 	}
 	
 	#feina-sidebar {
 		display: block;
+		width: 30px;
 	}
 }
 
@@ -352,7 +387,7 @@ body {
 	bottom: 0;
 	left: 0;
 	background-color: black;
-	border-top: 4px solid goldenrod;
+	border-top: 4px solid yellowgreen;
 	
 	label {
 		color: ivory;
@@ -361,6 +396,16 @@ body {
 		margin-left: 25px;
 		margin-right: 3px;
 		font-size: 10pt;
+		display: block;
+		float: left;
+		
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+	
+	input {
+		float: left;
 	}
 	
 	.filtres-subs {
@@ -373,6 +418,83 @@ body {
 	
 	.filtres-est {
 		color: orange;
+	}
+	
+	#filtres {
+		width: 100%;
+		height: 30px;
+	}
+	
+	.exclusiva {
+		text-decoration: underline;
+	}
+	
+	//Checkboxes
+	.checker {
+		width: 16px;
+		height: 16px;
+		//background-color: white;
+		position: relative;
+		float: left;
+		
+		label {
+			width: 16px;
+			height: 16px;
+			//background-color: rgba(yellowgreen, .5);
+			position: absolute;
+			top: 8px;
+			left: 8px;
+			display: block;
+			margin: 0;
+			cursor: pointer;
+			border: 1px solid rgba(yellowgreen, .7);
+			@include border-radius(50%);
+			
+			&:after {
+				//content: '✔';
+				position: absolute;
+				display: block;
+				top: 0px;
+				left: 0px;
+				content: '';
+				width: 15px;
+				height: 15px;
+				color: yellowgreen;
+				background-image: url(../images/tick.png);
+				@include background-image(no-repeat, 80% 80%, center center);
+			}
+		}
+		
+		input {
+			display: none;
+		}
+		
+		input[type="checkbox"]:checked + label:after {
+			opacity: 1;
+		}
+		
+		.unchecked:after {
+			opacity: .3;
+			//content: '';
+		}
+				
+	}
+	
+			
+	.checker-est label {
+		border-color: rgba(orange, .7);
+		
+		&:after {
+			background-image: url(../images/tick-orange.png);
+		}
+	}
+	
+	.checker-subs label {
+		border-color: rgba(steelblue, .7);
+		
+		&:after {
+			background-image: url(../images/tick-blue.png);
+		}
 	}
 }
 

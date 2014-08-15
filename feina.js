@@ -118,7 +118,7 @@ $(document).ready(function() {
 		if (timer.seconds == 0) {
 			printTickMinut(containerID, separacio, timer);
 		}
-		if (timer.minutes == 0) {
+		if (timer.minutes == 0 && timer.seconds == 0) {
 			printTickHora(containerID, separacio, timer)
 		}
 		return false;
@@ -298,9 +298,23 @@ $(document).ready(function() {
 	
 	$('.coment-icon').hover(function() {
 		var parent = $(this).parent('.comen');
-		var	top = $(this).offset();
-			top = top.bottom;
-			console.log(top);
+		var	row = parent.parent('tr');
+		var pos = row.offset();
+		var toprow = pos.top;
+		var containerheight = $('.scrollbody').css('height');
+			containerheight = containerheight.split('px')[0];
+		var limitPercent = .5;
+			containerheight *= limitPercent;
+			containerheight += 100;
+		console.log(containerheight);
+		if (pos.top < containerheight) {
+			var top = toprow - 50;
+		} else {
+			var commentheight = $('.popupcomment').css('height');
+				commentheight = commentheight.split('px')[0];
+			var top = toprow - commentheight - 50;
+		}
+		
 		if (!parent.hasClass('no-comen')) {
 			var text = parent.find('p').text();
 			$('.popupcomment').css('top', top);
