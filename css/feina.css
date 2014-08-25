@@ -302,3 +302,74 @@
     -webkit-box-shadow: 0px 2px 3px #555555;
     -moz-box-shadow: 0px 2px 3px #555555;
     box-shadow: 0px 2px 3px #555555; }
+
+#novaSessioButton {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 50px;
+  height: 50px; }
+
+#novaSessioDiv {
+  position: absolute;
+  top: 90px;
+  width: 570px;
+  left: 50px;
+  height: 380px;
+  padding-top: 20px;
+  background-color: #f7e0c0;
+  border-bottom: 25px solid rgba(154, 205, 50, 0.5);
+  display: none; }
+  #novaSessioDiv .dadaform {
+    width: 50%;
+    float: left;
+    display: block;
+    height: 80px; }
+    #novaSessioDiv .dadaform input {
+      text-align: center;
+      font-size: 13pt;
+      border: none;
+      margin: 0 auto;
+      display: block;
+      height: 25px;
+      background-color: #f1c993;
+      color: darkred; }
+    #novaSessioDiv .dadaform label {
+      display: block;
+      text-align: center;
+      margin: 10px 0px 5px 0px; }
+  #novaSessioDiv .durada {
+    width: 30%;
+    clear: both;
+    float: right;
+    display: block;
+    height: 100px;
+    margin: 0 50px 0 0; }
+    #novaSessioDiv .durada label {
+      display: inline;
+      margin-right: 10px; }
+    #novaSessioDiv .durada input {
+      width: 20px;
+      display: inline; }
+    #novaSessioDiv .durada .sublabel {
+      display: inline;
+      margin: 0;
+      margin-right: 5px; }
+  #novaSessioDiv textarea {
+    width: 80%;
+    height: 150px;
+    border: none;
+    margin: 50px auto 0;
+    padding: 0 10px;
+    font-size: 12pt;
+    line-height: 25px;
+    display: block;
+    resize: none;
+    background-image: -webkit-linear-gradient(#f7e0c0 95%, #adadad 100%);
+    background-repeat: repeat-y;
+    background-size: 100% 25px;
+    background-position: 0 0; }
+    #novaSessioDiv textarea::-webkit-input-placeholder {
+      color: darkred; }

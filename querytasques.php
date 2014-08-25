@@ -19,6 +19,7 @@ $esborrar	= (isset($_GET['esborrarTasca']))	? $_GET['esborrarTasca']	: '';
 $editar		= (isset($_GET['editarTasca']))		? $_GET['editarTasca']		: '';
 
 $id_tasca	= (isset($_GET['id_tasca']))		? $_GET['id_tasca']		: '';
+$tascaAct   = (isset($_GET['tascaAct']))		? $_GET['tascaAct']		: '';
 
 /**
  * Afegir tasca
@@ -59,6 +60,23 @@ if ($esborrar == 1) {
 	$db->query($query);
 	
 	$query = "UPDATE tasques SET ordre = ordre - 1 WHERE ordre > ".$ordre;
+	$db->query($query);
+}
+
+
+/**
+ * Editar tasca
+ *
+ */
+ 
+if ($editar == 1) {
+	if ($dLimit != '') {
+		$query = "UPDATE tasques SET id_projecte = '$project', id_subprojecte = '$subproj', nom = '$nom', descripcio = '$descr', prioritat = '$prior', estat = '$estat', data_limit = '$dLimit' WHERE id_tasca = ".$tascaAct;
+		echo $query;
+	} else {
+		$query = "UPDATE tasques SET id_projecte = '$project', id_subprojecte = '$subproj', nom = '$nom', descripcio = '$descr', prioritat = '$prior', estat = '$estat', data_limit = NULL WHERE id_tasca = ".$tascaAct;
+		echo $query;
+	}
 	$db->query($query);
 }
 

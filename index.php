@@ -7,6 +7,7 @@
 	<meta charset="utf-8" />
 	
 	<meta name="viewport" content="width=device-width" />
+	<link rel="shortcut icon" href="images/favicon.png" />
 	
 	<title>Task Manager</title>
 	
@@ -73,6 +74,7 @@
 		$dades = $db->query($query);
 		$dades = $db->fetch_array($dades);
 		$nom = $dades['nom'];
+		$subT = $dades['id_subprojecte'];
 		$des = $dades['descripcio'];
 		$pri = $dades['prioritat'];
 		$est = $dades['estat'];
@@ -86,6 +88,7 @@
 		$des = '';
 		$pri = '';
 		$est = '';
+		$subT = '';
 		$dli = '';
 		$subT = '';
 	}
@@ -116,7 +119,7 @@
 			?>
 		</ul>
 		
-		<span class="button afegir" id="afegir-projecte">+</span>
+		<a class="button afegir" id="nova-feina" href="feina.php?p=<?php echo $projecte; ?>">+</a>
 	</div>
 	
 	
@@ -163,7 +166,15 @@
 		<label>Subprojecte</label>
 		<select id="feina-sub" name="subproj" value="<?php echo $subT; ?>">
 			<?php foreach($arraySubprojects as $index=>$sub) {
-				echo '<option value="'.$index.'">'.$sub.'</option>';
+				if ($subT != '' && $subT == $index) {
+					$selected = 'selected';
+				} else if ($subT == '' && $sub == 'General') {
+					$selected = 'selected';
+				} else {
+					$selected = '';
+				}
+				
+				echo '<option value="'.$index.'" '.$selected.'>'.$sub.'</option>';
 			} ?>
 		</select>
 		

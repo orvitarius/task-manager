@@ -1,0 +1,322 @@
+@import "mixins.scss";
+
+.projecte-contingut {
+	width: 95%;
+	
+	.sub1 {
+		width: 100%;
+		background-image: none;
+		
+		&:after {
+			content: '';
+			display: block;
+			clear: both;
+		}
+		
+		.feina-sub-titol {
+			background-color: steelblue;
+			border-color: steelblue;
+		}
+	}
+	
+	.estadistiques {
+		width: 470px;
+		height: 480px;
+		float: right;
+		margin: 40px 60px 40px 0;
+		//background-color: darken(antiquewhite, 5%);
+		
+		.estad {
+			margin: 10px 10px 0 10px;
+			width: 450px;
+			height: 50px;
+			
+			&:after {
+				content: '';
+				display: block;
+				clear: both;
+			}
+			
+			label {
+				margin-bottom: 2px;
+				float: left;
+				display: block;
+			}
+			
+			input {
+				-webkit-appearance: none;
+				border: none;
+				background-color: transparent;
+				font-size: 12pt;
+				width: 25px;
+				text-align: center;
+				display: none;
+			}
+			
+			.nolabel {
+				float: right;
+				color: #d0d0d0;
+				font-size: 10pt;
+			}
+			
+			
+			.barra {
+				clear: both;
+				display: block;
+				width: 100%;
+				height: 30px;
+				background-color: darken(antiquewhite, 5%);
+				position: relative;
+				border-left: 5px solid rgba(yellowgreen, .8);
+				border-right: 5px solid rgba(yellowgreen, .8);;
+				
+				.tick {
+					position: absolute;
+					display: block;
+					background-color: rgba(yellowgreen, .3);
+					height: 20px;
+					top: 5px;
+					//** projectes.js **
+					width: 7px;
+					margin-left: 2px;
+				}
+				
+				.end {
+					position: absolute;
+					display: block;
+					background-color: rgba(yellowgreen, .8);
+					height: 28px;
+					top: 1px;
+					width: 8px;
+					left: 2px;
+					@include border-radius(10px);
+				}
+				
+				.percent {
+					position: absolute;
+					display: block;
+					color: rgba(yellowgreen, .8);
+					top: 8px;
+					left: 20px;
+				}
+				
+				.percent.complet {
+					width: 22px;
+					height: 22px;
+					top: 4px;
+					margin-left: -6px;
+					color: transparent;
+					border: 1px solid rgba(yellowgreen, .8);
+					background-image: url(../images/tick.png);
+					@include background-image(no-repeat, 16px 16px, center center);
+					@include border-radius(50%);
+				}
+			}
+		}
+		
+		
+		.estad.interval2 {
+			.barra {
+				border-color: darken(gold, 5%);
+			}
+			
+			.tick {
+				background-color: rgba(darken(gold, 5%), .3);
+			}
+			
+			.end {
+				background-color: rgba(darken(gold, 5%), .8);
+			}
+			
+			.percent {
+				color: darken(gold, 10%);
+			}
+		}
+		
+		.estad.interval1 {
+			.barra {
+				border-color: coral;
+			}
+			
+			.tick {
+				background-color: rgba(coral, .3);
+			}
+			
+			.end {
+				background-color: rgba(coral, .8);
+			}
+			
+			.percent {
+				color: coral;
+			}
+		}
+		
+		.estad.interval0 {
+			.barra {
+				border-color: rgba(darkred, .8);
+			}
+			
+			.tick {
+				background-color: rgba(darkred, .3);
+			}
+			
+			.end {
+				background-color: rgba(darkred, .8);
+			}
+			
+			.percent {
+				color: rgba(darkred, .8);
+			}
+		}
+		
+		
+		.estad.total {
+			margin-top: 150px;
+			
+			label {
+				display: block;
+				margin: 5px 0;
+				font-size: 13pt;
+				color: steelblue;
+			}
+			
+			.barra {
+				border-color: rgba(steelblue, .8);
+				
+				.tick {
+					background-color: rgba(steelblue, .4);
+				}
+				
+				.percent {
+					color: steelblue;
+				}
+				
+				.end {
+					background-color: steelblue;
+				} 
+			}
+		}
+	}
+	
+	
+	
+	
+	
+	.bloc {
+		width: 600px;
+		float: left;
+		height: 100%;
+		
+		.dadaproject {
+			margin: 40px 0 60px 20px;
+			float: left;
+			width: 150px;
+			
+			label {
+				color: #c0c0c0;
+				text-align: center;
+				display: block;
+				padding: 5px 0;
+			}
+			
+			span {
+				font-size: 14pt;
+				display: block;
+				text-align: center;
+				//background-color: darken(antiquewhite, 5%);
+				width: 150px;
+				margin: 5px auto;
+				padding: 5px 0;
+			}
+			
+			.titol {
+				color: steelblue;
+			}
+		}
+		
+		#dataLimit {
+			float: right;
+			margin: 40px 0 60px 0;
+			
+			span {
+				color: darkred;
+			}
+		}
+		
+		
+		.percentatgeTemps {
+			width: 250px;
+			background-color: darken(antiquewhite, 5%);
+			height: 30px;
+			float: left;
+			position: relative;
+			margin: 70px 0 80px 10px;
+			border-left: 5px solid rgba(steelblue, .8);
+			border-right: 5px solid rgba(steelblue, .8);
+			
+			.tick {
+			    position: absolute;
+			    display: block;
+			    background-color: rgba(steelblue, .3);
+			    height: 20px;
+			    top: 5px;
+			    //** projectes.js **
+			    width: 7px;
+			    margin-left: 2px;
+			}
+			
+			.end {
+			    position: absolute;
+			    display: block;
+			    background-color: rgba(steelblue, .8);
+			    height: 28px;
+			    top: 1px;
+			    width: 8px;
+			    left: 2px;
+			    @include border-radius(10px);
+			}
+			
+			.percent {
+			    position: absolute;
+			    display: block;
+			    color: rgba(steelblue, .8);
+			    top: 8px;
+			    left: 20px;
+			}
+		}
+		
+		
+		
+		.dadesHores {
+			margin: 30px 0 15px 20px;
+			border-bottom: 1px solid #dfdfdf;
+			padding: 1px;
+			display: block;
+			clear: both;
+			
+			&:after {
+				content: '';
+				display: block;
+				clear: both;
+			}
+			
+			label, span {
+				color: #999;
+				float: left;
+			}
+			
+			span {
+				float: right;
+				color: steelblue;
+			}	
+		}
+		
+		.projeccio span {
+			color: lighten(darkred, 10%);
+		}
+		
+		
+		
+		
+	} 
+}

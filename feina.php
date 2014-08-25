@@ -7,7 +7,7 @@
 	<meta charset="utf-8" />
 	
 	<meta name="viewport" content="width=device-width" />
-	
+	<link rel="shortcut icon" href="images/favicon.png" />
 	<title>Task Manager</title>
 	
 	
@@ -39,6 +39,9 @@
 	$id_proj = $db->fetch_array($query);
 	$id_projecte = $id_proj['id_projecte'];
 	
+	
+	$avui = date('d / m / Y', mktime());
+	$avuiSQL = date('Y-m-d H:s', mktime());
 	?>
 	
 	<!-- MENU SUPERIOR -->
@@ -63,23 +66,26 @@
 			?>
 		</ul>
 		
-		<span class="button afegir" id="afegir-projecte">+</span>
+		<!--<span class="button afegir" id="afegir-projecte">+</span>-->
 	</div>
 	
 	<section class="feina-contingut">
 	
 		<section class="feina-sub sub1">
 		
-			<h2 class="feina-sub-titol">Nova sessió de feina<b>11 / 08 / 2014</b></h2>
+			<h2 class="feina-sub-titol">Nova sessió de feina<b><?php echo $avui; ?></b></h2>
 		
-			<form id="nova-feina">
+			<form id="nova-feina" method="get" action="querysessions.php">
 			
+				<input style="display:none" name="project" value="<?php echo $id_projecte; ?>" />
+				<input style="display:none" name="starthour" value="" id="starthour" />
+				
 				<div class="time">
-				<input class="time-h" id="hores" value="00" />
+				<input class="time-h" id="hores" name="hores" value="00" />
 				<label>:</label>
-				<input class="time-m" id="mins" value="00"/>
+				<input class="time-m" id="mins" name="mins" value="00"/>
 				<label>:</label>
-				<input class="time-s" id="secs" value="00"/></div>
+				<input class="time-s" id="secs" name="secs" value="00"/></div>
 				
 			
 				<div class="rellotge" id="rellotge1">
@@ -95,13 +101,13 @@
 				
 				<input type="button" name="start" class="timer-button" id="start" value="" />
 				<input type="button" name="stop" class="timer-button reset" id="stop" value="" />
+								
+				<textarea placeholder="Comentaris" name="comentari"></textarea>
 				
-				<input class="data" style="display:none" value="11/08/2014" />
-				
-				<textarea placeholder="Comentaris"></textarea>
-				
-				<button type="submit" class="boto-form"></button>
+				<button type="" class="boto-form" id="afegirSessio" ></button>
 			</form>	
+			
+			<button id="novaSessioButton"></button>
 		</section>
 		
 		<section class="feina-sub sub2">
@@ -114,29 +120,38 @@
 				<div class="scrollbody">
 					<table id="sessions-table">
 						<tbody>
-							<?php for($i=0; $i<40; $i++) {
-								$r = rand(0,1);
-								if ($r == 0) {
-									$class = "";
-									$coment = "comentarii".$i;
-								} else {
-									$class = " no-comen";
-									$coment = "";
-								}
-							?>
+							
+							<?php
+							
+							$query = "SELECT * FROM sessions_feina WHERE id_projecte = ".$id_projecte." ORDER BY data_hora_inici DESC";
+							
+							$sessions = $db->query($query);
+							while($sessio = $db->fetch_array($sessions)) {
+								$inici = sqldate2taula($sessio['data_hora_inici']);
+								$durada = $sessio['durada'];
+								$teComentari = $sessio['teComentari'];
+								$comentari = $sessio['comentari'];
 								
-								<tr><td class="data">10 / 08 / 2014 - 12:30</td>
-									<td class="temps">2h 30m</td>
-									<td class="comen <?php echo $class; ?>"><span class="coment-icon"></span><p><?php echo $coment; ?></p></td>
+								if($teComentari != 'S') {
+									$class = 'no-comen';
+								} else {
+									$class = '';
+								}
+								?>
+								
+								<tr>
+									<td class="data"><?php echo $inici; ?></td>
+									<td class="temps"><?php echo $durada; ?></td>
+									<td class="comen <?php echo $class; ?>"><span class="coment-icon"></span><p><?php echo $comentari; ?></p></td>
 								</tr>
 								
-							<?php } ?>
+							<?php } ?>	
 						</tbody>
 					</table>
 				</div>
 				<div class="total">
 					<table>
-					<tr><td class="data"></td><td class="temps">21h 30m</td><td class="comen"><span id="commentsearch" class="coment-icon-blank"></span></td></tr>
+					<tr><td class="data"></td><td class="temps"></td><td class="comen"><span id="commentsearch" class="coment-icon-blank"></span></td></tr>
 					</table>
 				</div>
 			</div>
@@ -145,6 +160,35 @@
 		</section>
 	
 	</section>
+	
+	
+	<div id="novaSessioDiv" class="invisible">
+		<form id="novaSessioForm" method="get" action="querysessions.php">
+
+			<input style="display:none" name="project" value="<?php echo $id_projecte; ?>" />
+			<input style="display:none" name="manual" value="1" />
+			
+			<div class="dadaform">
+			<label>Data sessió</label>
+			<input id="data" name="dataSessio" class="datepicker" value="<?php echo $avui; ?>" />
+			</div>
+			
+			<div class="dadaform">
+			<label>Hora de la sessió</label>
+			<input id="hora" name="horaSessio" value="09:00:00" />
+			</div>
+		
+			<div class="dadaform durada">
+			<label>Durada</label>
+			<input id="hores" name="hores" value="1" />
+			<label class="sublabel">h</label>
+			<input id="minuts" name="minuts" value="00" />
+			<label class="sublabel">m</label>
+			</div>
+			
+			<textarea name="comentSessio" placeholder="Comentaris"></textarea>
+		</form>
+	</div>
 	
 	
 	<script src="index.js"></script>

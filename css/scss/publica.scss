@@ -1,0 +1,91 @@
+@import 'mixins.scss';
+
+.publica {
+	background-image: none;
+	background-color: antiquewhite;
+	
+	section {
+		width: 100%;
+	}
+	
+	.header {
+		height: 150px;
+		background-color: antiquewhite;
+		
+		#logoprincipal {
+			display: block;
+			width: 600px;
+			margin: 0 auto;
+		}
+	}
+	
+	.content {
+		//border-bottom: 10px solid rgba(darkred, .5);
+		//border-top: 1px solid darkred;
+		height: 100px;
+		position: relative;
+		overflow: hidden;
+		opacity: .7;
+		background-image: url(../images/cork.jpg);
+		@include background-image(repeat-y, 100% auto, 0 0);
+		
+		.tasques-publica {
+			width: 100%;
+			height: 200px;
+			margin: 0;
+			position: relative;
+			//background-color: rgba(ivory, .3);
+			
+			.tasca {
+				position: absolute;
+				width: 250px;
+				height: 150px;
+				top: 15px;
+				@include box-shadow(2px, 0px, 5px, #333);
+				@include background-image(repeat-y, 100% 20px, 0 -17px);
+				
+				.tasca-titol {
+					font-size: 14pt;
+					height: 30px;
+					line-height: 30px;
+					text-indent: 8px;
+				}
+			}
+			
+			#tasca1 {
+				left: 10%;
+				color: darkred;
+				
+				.tasca-titol {
+					color: black;
+					border-bottom-color: darkred;
+					background-color: lighten(darkred, 5%);
+					background-image: url(../images/update.png);
+					@include background-image(no-repeat, auto 80%, 90% center);
+				}
+			}
+			
+			#tasca2 {
+				left: 50%;
+				margin-left: -125px;
+				
+				.tasca-titol {
+					color: black;
+					border-bottom-color: steelblue;
+					background-color: steelblue;
+				}
+			}
+			
+			#tasca3 {
+				right: 10%;
+				left: auto;
+				
+				.tasca-titol {
+					color: black;
+					border-bottom-color: yellowgreen;
+					background-color: yellowgreen;
+				}
+			}
+		}
+	}
+}

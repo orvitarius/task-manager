@@ -67,6 +67,14 @@ function zero2null($camp) {
 }
 
 
+function sqldate2taula($date) {
+	$data = split(' ', $date);
+	$hora = $data[1];
+	$data = $data[0];
+	$new = date("d / m / Y", strtotime($data));
+	$new .= ' - '.$hora;
+	return $new;
+}
 
 
 ?>

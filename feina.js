@@ -130,6 +130,14 @@ $(document).ready(function() {
 	 */
 	 
 	function startclock() {
+		var ara = new Date();
+		var dia = ara.getDate();
+		var mes = ara.getMonth() + 1;
+		var any = ara.getFullYear();
+		var hor = ara.getHours();
+		var min = ara.getMinutes();
+		$('#starthour').val(any+'-'+mes+'-'+dia+' '+hor+':'+min);
+		
 		clocker = setInterval(function() {
 			countClock(timer, separacio);
 		}, 1000);
@@ -292,7 +300,7 @@ $(document).ready(function() {
 	
 	
 	/**
-	 * Veure comentaris TODO --> ajustar posicio
+	 * Veure comentaris
 	 *
 	 */
 	
@@ -327,6 +335,30 @@ $(document).ready(function() {
 	
 	$('.coment-icon').mouseout(function() {
 		$('.popupcomment').fadeOut();
+	});
+	
+	
+	
+	
+	
+	
+	
+	$('#novaSessioDiv').slideUp();
+	
+	$('#novaSessioButton').click(function() {
+		$('#novaSessioDiv').slideToggle();
+		$('#novaSessioDiv').toggleClass('invisible');
+	});
+	
+	
+	$('#afegirSessio').click(function(e) {
+		if ($('#novaSessioDiv').hasClass('invisible')) {
+			$('#nova-feina').submit();
+		} else {
+			e.preventDefault();
+			$('#novaSessioForm').submit();
+		}
+		return false;
 	});
 
 });
