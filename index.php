@@ -137,9 +137,19 @@
 				$activa = '';
 			}
 			
+			if ($tasca['data_limit'] != '') {
+				$avui = mktime();
+				$diesFinsLimit = strtotime($tasca['data_limit']) - $avui;
+				$diesFinsLimit = floor($diesFinsLimit/3600/24);
+				$dLimit = '<p class="tasca-data">'.$diesFinsLimit.'</p>';
+			} else {
+				$dLimit = '';
+			}
+			
 			echo '<div draggable="true" id="'.$tasca['id_tasca'].'" class="tasca '.$arrayPrioritats[$tasca['prioritat']].' '.$arrayEstats[$tasca['estat']].' '.$arraySubprojects[$tasca['id_subprojecte']].' '.$activa.'" >';
 			echo '<span class="tasca-titol" id="'.$tasca['id_tasca'].'">'.$tasca['nom'].'</span>';
 			echo '<p class="tasca-descr">'.$tasca['descripcio'].'</p>';
+			echo $dLimit;
 			echo '</div>';
 		}
 		?>

@@ -184,6 +184,22 @@ body {
 				display: none;
 			}
 		}
+		
+		.tasca-data {
+			position: absolute;
+			bottom: 8px;
+			right: 8px;
+			line-height: 25px;
+			width: 25px;
+			height: 25px;
+			font-size: 12pt;
+			font-weight: normal;
+			text-align: center;
+			border: 1px solid rgba(darkred, .8);
+			background-color: rgba(darkred, .1);
+			color: darkred;
+			@include border-radius(50%);
+		}
 	}
 	
 	.seleccionada {
@@ -509,7 +525,8 @@ body {
 	left: 0;
 	z-index: 10;
 	background-color: darken(antiquewhite, 10%);
-	//border-top: 1px solid darkred;
+	//border-top: 4px solid darken(darkred, 10%);
+	@include box-shadow(-1px, 0, 10px, #555);
 	
 	label {
 		color: black;

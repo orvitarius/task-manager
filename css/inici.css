@@ -155,6 +155,23 @@ body {
       @media only screen and (max-width: 800px) {
         .tasques .tasca .tasca-descr {
           display: none; } }
+    .tasques .tasca .tasca-data {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      line-height: 25px;
+      width: 25px;
+      height: 25px;
+      font-size: 12pt;
+      font-weight: normal;
+      text-align: center;
+      border: 1px solid rgba(139, 0, 0, 0.8);
+      background-color: rgba(139, 0, 0, 0.1);
+      color: darkred;
+      border-radius: 50%;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      background-clip: padding-box; }
   .tasques .seleccionada {
     outline: 5px solid rgba(70, 130, 180, 0.8); }
   .tasques .Acabada .tasca-titol {
@@ -410,7 +427,10 @@ body {
   bottom: 0;
   left: 0;
   z-index: 10;
-  background-color: #f4d4aa; }
+  background-color: #f4d4aa;
+  -webkit-box-shadow: 0 -1px 10px #555555;
+  -moz-box-shadow: 0 -1px 10px #555555;
+  box-shadow: 0 -1px 10px #555555; }
   .filtres label {
     color: black;
     line-height: 30px;
