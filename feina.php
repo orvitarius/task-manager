@@ -21,54 +21,25 @@
 	<link rel="stylesheet" href="css/feina.css" />
 	<link rel="stylesheet" href="css/datepicker.css" />
 	
-	
-	
 </head>
 
 <body>
 
 	<?php require('class.connection.php'); ?>
 	<?php require('config.php'); ?>
+	<?php require('funcions.php'); ?>
 
 	<?php
 	$db = new Database(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-	
-	$projecte = (isset($_GET['p'])) ? $_GET['p'] : 'Reptext';
-	
-	$query = $db->query("SELECT id_projecte FROM projectes WHERE nom = '$projecte'");
-	$id_proj = $db->fetch_array($query);
-	$id_projecte = $id_proj['id_projecte'];
-	
-	
+
 	$avui = date('d / m / Y', mktime());
 	$avuiSQL = date('Y-m-d H:s', mktime());
 	?>
 	
 	<!-- MENU SUPERIOR -->
 	
-	<div class="menu-superior">
-		<a class="titol-projecte" href="index.php?p=<?php echo $projecte; ?>"><?php echo $projecte; ?></a>
+	<?php require_once('menu-superior.php'); ?>
 		
-		<svg height="20" width="20" class="fletxa">
-			<polyline fill="none" stroke="darkred" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-				points =	"0,0
-							 8,12
-							 16,0" />
-		</svg>
-		
-		
-		<ul class="selector" id="selector-projectes">
-			<?php
-			$query = $db->query("SELECT nom FROM projectes");
-			while ($proj = $db->fetch_array($query)) {
-				echo '<li><a href="index.php?p='.$proj['nom'].'">'.$proj['nom'].'</a></li>';
-			}
-			?>
-		</ul>
-		
-		<!--<span class="button afegir" id="afegir-projecte">+</span>-->
-	</div>
-	
 	<section class="feina-contingut">
 	
 		<section class="feina-sub sub1">
@@ -121,31 +92,8 @@
 					<table id="sessions-table">
 						<tbody>
 							
-							<?php
-							
-							$query = "SELECT * FROM sessions_feina WHERE id_projecte = ".$id_projecte." ORDER BY data_hora_inici DESC";
-							
-							$sessions = $db->query($query);
-							while($sessio = $db->fetch_array($sessions)) {
-								$inici = sqldate2taula($sessio['data_hora_inici']);
-								$durada = $sessio['durada'];
-								$teComentari = $sessio['teComentari'];
-								$comentari = $sessio['comentari'];
+							<?php printSessionsFeina($id_projecte, $db); ?>
 								
-								if($teComentari != 'S') {
-									$class = 'no-comen';
-								} else {
-									$class = '';
-								}
-								?>
-								
-								<tr>
-									<td class="data"><?php echo $inici; ?></td>
-									<td class="temps"><?php echo $durada; ?></td>
-									<td class="comen <?php echo $class; ?>"><span class="coment-icon"></span><p><?php echo $comentari; ?></p></td>
-								</tr>
-								
-							<?php } ?>	
 						</tbody>
 					</table>
 				</div>
