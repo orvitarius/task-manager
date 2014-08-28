@@ -1,0 +1,131 @@
+@import 'mixins.scss';
+
+.tasca {
+    float: left;
+    position: relative;
+    width: 200px;
+    height: 129px;
+    margin: 10px 5px 10px 10px;
+    user-select: none;
+    z-index: 1;
+    overflow: hidden;
+    transition: height 1s ease, opacity .5s ease;
+    background-color: antiquewhite;
+    background-image: -webkit-linear-gradient(antiquewhite 96%, lighten(#a0a0a0, 5%) 100%); //Color de fons i color de la linia
+    @include background-image(repeat-y, 100% 20px, 0 -11px);
+    @include border-radius(2px);
+    @include box-shadow(3px, 1px, 6px, #555);
+    @include responsive(800) {
+    	width: 100%;
+    	margin: 0px 0 0 0;
+    	height: 40px;
+    	box-shadow: none;
+    	border-radius: 0;
+    	border-bottom: 1px solid #cfcfcf;
+    }
+    
+    &:hover {
+    	outline: 2px solid steelblue;
+    }
+    
+    .tasca-titol {
+    	display: block;
+    	margin-bottom: 5px;
+    	width: 96%;
+    	padding: 5px 2%;
+    	background-color: antiquewhite;
+    	border-bottom: 2px solid darkred;
+    	user-select: none;
+    	cursor: pointer;
+    	@include responsive(800) {
+    		height: 30px;
+    		line-height: 30px;
+    	}
+    }
+    
+    .tasca-descr {
+    	font-size: 10pt;
+    	text-align: left;
+    	line-height: 15pt;
+    	margin: 0px 5px 5px;
+    	user-select: none;
+    	@include responsive(800) {
+    		display: none;
+    	}
+    }
+    
+    .tasca-data {
+    	position: absolute;
+    	bottom: 8px;
+    	right: 8px;
+    	line-height: 25px;
+    	width: 25px;
+    	height: 25px;
+    	font-size: 12pt;
+    	font-weight: normal;
+    	text-align: center;
+    	border: 1px solid rgba(darkred, .8);
+    	background-color: rgba(darkred, .1);
+    	color: darkred;
+    	@include border-radius(50%);
+    }
+}
+
+.amagades {
+	height: 26px;
+	
+	.tasca-data {
+		height: 18px;
+		width: 18px;
+		font-size: 10pt;
+		line-height: 18px;
+		bottom: 3px;
+		right: 5px;
+	}
+}
+
+.Acabada {
+	opacity: .7;
+	
+	.tasca-titol {
+    	text-decoration: line-through;
+    	color: darkred;
+    }
+}
+
+.Inactiva {
+    opacity: .7;
+}
+
+
+.urgent .tasca-titol {
+    background-color: rgba(yellowgreen, .8);
+    border-bottom-color: darken(yellowgreen, 20%);
+}
+
+.molturgent .tasca-titol {
+    background-color: rgba(orange, .8);
+    border-bottom-color: darken(orange, 10%);	
+}
+
+.seleccionada {
+    outline: 5px solid rgba(steelblue, .8);
+    
+    .tasca-titol {
+    	background-color: rgba(steelblue, .6);
+    	border-color: steelblue;
+    }
+    
+    &:hover {
+	    outline: 5px solid rgba(steelblue, .8);
+    }
+}
+
+.marcades {
+	opacity: 1;
+}
+
+.anti-marcades {
+	opacity: .3;
+}
+

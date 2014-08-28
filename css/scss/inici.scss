@@ -1,4 +1,6 @@
 @import 'mixins.scss';
+@import 'tasques.scss';
+@import 'menu-superior.scss';
 
 * {
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
@@ -7,7 +9,6 @@
 
 html {
 	min-height: 100%;
-	//font-family: helvetica;
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
 	font-weight: 300;
 }
@@ -31,80 +32,6 @@ body {
 	cursor: pointer;
 	@include border-radius(50%);
 }
-
-
-
-
-//Menu superior
-.menu-superior {
-	width: 100%;
-	height: 35px;
-	background-color: black;
-	border-bottom: 5px solid darkred;
-	position: fixed;
-	top: 0;
-	z-index: 10;
-	
-	.titol-projecte {
-		color: ivory;
-		line-height: 35px;
-		margin: 0 0 0 40px;
-		font-size: 14pt;
-		font-weight: 100;
-		letter-spacing: 1pt;
-		width: 150px;
-		display: block;
-		text-decoration: none;
-	}
-
-	.fletxa {
-		position: absolute;
-		top: 12px;
-		left: 10px;
-	}
-	
-	
-	//Selector de projectes
-	.selector {
-		display: none;
-		position: relative;
-		margin-top: 5px;
-		margin-left: 40px;
-		
-		li {
-			width: 140px;
-			padding: 10px 0 10px 10px;
-			background-color: #c0c0c0;
-			border-bottom: 1px solid #999;
-			z-index: 2;
-			
-			a {
-				text-decoration: none;
-				color: black;
-				width: 100%;
-				height: 100%;
-				display: block;
-			}
-			
-			&:hover {
-				background-color: #999;
-				
-				a {
-					color: ivory;
-				}
-			}
-		}
-	}
-	
-	//Afegir projecte
-	#nova-feina {
-		position: absolute;
-		right: 15px;
-		top: 4px;
-		text-decoration: none;
-	}
-}
-
 
 
 
@@ -133,97 +60,6 @@ body {
 		overflow-y: scroll;
 		position: fixed;
 		
-	}
-	
-	.tasca {
-		float: left;
-		position: relative;
-		width: 200px;
-		height: 129px;
-		margin: 10px;
-		margin-right: 5px;
-		background-color: ANTIQUEWHITE;
-		background-image: -webkit-linear-gradient(antiquewhite 96%, lighten(#a0a0a0, 5%) 100%); 
-		@include background-image(repeat-y, 100% 20px, 0 -11px);
-		user-select: none;
-		z-index: 1;
-		overflow: hidden;
-		@include border-radius(2px);
-		@include box-shadow(3px, 1px, 6px, #555);
-		@include responsive(800) {
-			width: 100%;
-			margin: 0px 0 0 0;
-			height: 40px;
-			box-shadow: none;
-			border-radius: 0;
-			border-bottom: 1px solid #cfcfcf;
-		}
-		
-		.tasca-titol {
-			display: block;
-			margin-bottom: 5px;
-			width: 96%;
-			padding: 5px 2%;
-			background-color: antiquewhite;
-			border-bottom: 2px solid darkred;
-			user-select: none;
-			cursor: pointer;
-			@include responsive(800) {
-				height: 30px;
-				line-height: 30px;
-			}
-		}
-		
-		.tasca-descr {
-			font-size: 10pt;
-			text-align: left;
-			line-height: 15pt;
-			margin: 0px 5px 5px;
-			user-select: none;
-			@include responsive(800) {
-				display: none;
-			}
-		}
-		
-		.tasca-data {
-			position: absolute;
-			bottom: 8px;
-			right: 8px;
-			line-height: 25px;
-			width: 25px;
-			height: 25px;
-			font-size: 12pt;
-			font-weight: normal;
-			text-align: center;
-			border: 1px solid rgba(darkred, .8);
-			background-color: rgba(darkred, .1);
-			color: darkred;
-			@include border-radius(50%);
-		}
-	}
-	
-	.seleccionada {
-		outline: 5px solid rgba(steelblue, .8);
-	}
-	
-	.Acabada .tasca-titol {
-		text-decoration: line-through;
-		color: darkred;
-	}
-	
-	.Inactiva {
-		opacity: .7;
-	}
-	
-	
-	.urgent .tasca-titol {
-		background-color: rgba(yellowgreen, .8);
-		border-bottom-color: darken(yellowgreen, 20%);
-	}
-	
-	.molturgent .tasca-titol {
-		background-color: rgba(orange, .8);
-		border-bottom-color: darken(orange, 10%);	
 	}
 }
 
@@ -651,11 +487,10 @@ body {
 #paperera {
 	position: fixed;
 	bottom: 44px;
-	left: 30px;
+	right: 10px;
 	width: 40px;
 	height: 80px;
-	z-index: 2000;
-	//background-color: darkred;
+	z-index: 20;
 	background-image: url(../images/bin.png);
 	@include background-image(no-repeat, 100% 50px, center bottom);
 	

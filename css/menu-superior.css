@@ -1,0 +1,67 @@
+.menu-superior {
+  width: 100%;
+  height: 35px;
+  background-color: black;
+  border-bottom: 5px solid darkred;
+  position: fixed;
+  top: 0;
+  z-index: 10; }
+  .menu-superior .titol-projecte {
+    color: ivory;
+    line-height: 35px;
+    margin: 0 0 0 40px;
+    font-size: 14pt;
+    font-weight: 100;
+    letter-spacing: 1pt;
+    width: 150px;
+    display: block;
+    text-decoration: none; }
+  .menu-superior .fletxa {
+    position: absolute;
+    top: 12px;
+    left: 10px; }
+  .menu-superior .selector {
+    display: none;
+    position: relative;
+    margin-top: 5px;
+    margin-left: 40px; }
+    .menu-superior .selector li {
+      width: 140px;
+      padding: 10px 0 10px 10px;
+      background-color: #c0c0c0;
+      border-bottom: 1px solid #999;
+      z-index: 2; }
+      .menu-superior .selector li a {
+        text-decoration: none;
+        color: black;
+        width: 100%;
+        height: 100%;
+        display: block; }
+      .menu-superior .selector li:hover {
+        background-color: #999; }
+        .menu-superior .selector li:hover a {
+          color: ivory; }
+  .menu-superior .nav {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 35px;
+    width: 150px; }
+    .menu-superior .nav li {
+      margin: 7px 15px 0 0;
+      float: right;
+      width: 22px;
+      height: 22px;
+      cursor: pointer;
+      background-image: url(../images/clock2.png);
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      background-position: center center; }
+      .menu-superior .nav li a {
+        display: block;
+        width: 100%;
+        height: 100%; }
+    .menu-superior .nav #projecte {
+      background-image: url(../images/home.png); }
+    .menu-superior .nav #tasques {
+      background-image: url(../images/task.png); }

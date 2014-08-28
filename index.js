@@ -1,18 +1,41 @@
 $(document).ready(function() {
 	
+	/**
+	 * Menu superior
+	 *
+	 */
+	
 	$('.fletxa').click(function() {
 		$('#selector-projectes').slideToggle();
 	})
 	
+	function currentMenuItem() {
+		var url = window.location.href;
+		url = url.split('.php')[0];
+		url = url.split('/');
+		var last = url.length;
+		url = url[last-1];
+		
+		$('.menu-superior .nav .nav-item').each(function() {
+			var thisurl = $(this).find('a').attr('href');
+			thisurl = thisurl.split('.php')[0];
+			if (thisurl == url) {
+				$(this).addClass('current-item');
+			} else {
+				$(this).removeClass('current-item');
+			}
+		});
+	}
 	
 	
-	$('.tasca').dblclick(function() {
-		$('.tasca').each(function() {
-			$(this).removeClass('activada');
-		})
-		$(this).toggleClass('activada');
-	});
+	currentMenuItem();
+
 	
+	
+	/**
+	 * Datepicker setup
+	 *
+	 */
 	
 	$('.datepicker').datepicker({
 		inline: true,  
@@ -29,6 +52,11 @@ $(document).ready(function() {
 	 * Carregar una tasca
 	 *
 	 */	
+	
+	$('.tasca-titol').click(function() {
+		$('.tasca-descr').slideToggle();
+		$('.tasca').toggleClass('amagades');
+	});
 	 
 	$('.tasca-titol').dblclick(function() {
 		var numtasc = $(this).attr('id');
@@ -58,9 +86,7 @@ $(document).ready(function() {
 		var url = window.location.href;
 			params = url.split('&tasca=');
 			tasca  = params[1];
-			//console.log(params.length);
 			if (params.length > 1) {
-				//console.log('hola');
 				activa = true;
 			} else {
 				activa = false;
@@ -83,55 +109,9 @@ $(document).ready(function() {
 	 * Filtradors
 	 *
 	 */
-	
-	$('#filtres .checker label').click(function() {
-		//console.log('in');
-		$(this).toggleClass('unchecked');
-		var checkboxid = $(this).siblings('input').attr('id');
-		amagaTasques(checkboxid);
-		//$('#filtres .filtrelabel').removeClass('exclusiva');
-	});
-	
-	$('#filtres .checker label').mouseover(function() {
-		var checkboxid = $(this).siblings('input').attr('id');
-		marcaTasques(checkboxid);
-	});
-	
-	$('#filtres .checker label').mouseout(function() {
-		var checkboxid = $(this).siblings('input').attr('id');
-		desmarcaTasques(checkboxid);
-	});
-	
-	$('#filtres .filtrelabel').click(function() {
-		var checkboxid = $(this).next('.checker').find('input').attr('id');
-		console.log(checkboxid);
-		mostraNomes(checkboxid);
-		//$(this).addClass('exclusiva');
-		
-		
-	});
-	
-	var checkers = { 'est-04' : 'Acabada', 
-					 'est-02' : 'Inactiva', 
-					 'est-01' : 'Activa',
-					 
-					 'sub-00001' : 'General', 
-					 'sub-00002' : 'Funcionament', 
-					 'sub-00003' : 'CSS', 
-					 'sub-00004' : 'Testing',
-					 
-					 'pri-01' : 'molturgent', 
-					 'pri-02' : 'urgent', 
-					 'pri-03' : 'normal', 
-					 'pri-04' : 'pocurgent', 
-					 'pri-05' : 'quanpuguis', 
-					 'pri-06' : 'nula'			};
-					 
-
-	
+	 
 	function amagaTasques(idcheckbox) {
 		var classetasca = checkers[idcheckbox];
-		//console.log(classetasca);
 		if($('#'+idcheckbox).is(':checked')) {
 			$('.'+classetasca).css('display', 'none');
 		} else {
@@ -141,12 +121,19 @@ $(document).ready(function() {
 	
 	function marcaTasques(idcheckbox) {
 		var classetasca = checkers[idcheckbox];
-		$('.'+classetasca).css('outline', '4px solid orange');
+		$('.tasca').each(function() {
+			if ($(this).hasClass(classetasca)) {
+				$(this).addClass('marcades');
+			} else {
+				$(this).addClass('anti-marcades');
+			}
+		});
 	}
 	
 	function desmarcaTasques(idcheckbox) {
 		var classetasca = checkers[idcheckbox];
-		$('.'+classetasca).css('outline', 'none');
+		$('.tasca').removeClass('marcades');
+		$('.tasca').removeClass('anti-marcades');
 	}
 	
 	function mostraNomes(idcheckbox) {
@@ -171,7 +158,60 @@ $(document).ready(function() {
 		$('#'+idcheckbox).attr('checked', true);
 		$('#'+idcheckbox).siblings('input').attr('checked', true);
 	}
+
+
 	
+	$('#filtres .checker label').click(function() {
+		$(this).toggleClass('unchecked');
+		var checkboxid = $(this).siblings('input').attr('id');
+		amagaTasques(checkboxid);
+	});
+	
+	$('#filtres .checker label').mouseover(function() {
+		var checkboxid = $(this).siblings('input').attr('id');
+		marcaTasques(checkboxid);
+	});
+	
+	$('#filtres .checker label').mouseout(function() {
+		var checkboxid = $(this).siblings('input').attr('id');
+		desmarcaTasques(checkboxid);
+	});
+	
+	$('#filtres .filtrelabel').mouseover(function() {
+		var checkboxid = $(this).next('.checker').find('input').attr('id');
+		marcaTasques(checkboxid);
+	});
+	
+	$('#filtres .filtrelabel').mouseout(function() {
+		var checkboxid = $(this).next('.checker').find('input').attr('id');
+		desmarcaTasques(checkboxid);
+	});
+	
+	$('#filtres .filtrelabel').click(function() {
+		var checkboxid = $(this).next('.checker').find('input').attr('id');
+		console.log(checkboxid);
+		mostraNomes(checkboxid);		
+	});
+	
+	var checkers = { 'est-04' : 'Acabada', 
+					 'est-02' : 'Inactiva', 
+					 'est-01' : 'Activa',
+					 
+					 'sub-00001' : 'General', 
+					 'sub-00002' : 'Funcionament', 
+					 'sub-00003' : 'CSS', 
+					 'sub-00004' : 'Testing',
+					 
+					 'pri-01' : 'molturgent', 
+					 'pri-02' : 'urgent', 
+					 'pri-03' : 'normal', 
+					 'pri-04' : 'pocurgent', 
+					 'pri-05' : 'quanpuguis', 
+					 'pri-06' : 'nula'			};
+					 
+
+	
+		
 	
 	
 		
@@ -193,31 +233,30 @@ $(document).ready(function() {
 	 +
 	 */
 	
-	$(".tasca").draggable();
-	
+	$('.tasques').sortable({
+	    scroll: false
+    });
+    
+    $('.tasques').disableSelection();
+    
+    
 	$( ".tasca" ).droppable({
-      drop: function( event, ui ) {
-        //alert('holaaa');
-        var id_drop = $(this).attr('id');
-        	id_drag = $(ui.draggable).attr('id');
-        	//alert(id_drop);
-        	//alert(id_drag);
+    	drop: function( event, ui ) {
+        	var id_drop = $(this).attr('id');
+        		id_drag = $(ui.draggable).attr('id');
         	$.ajax ({
 	        	type: 'GET',
 	        	data: { drag: id_drag, drop: id_drop },
 	        	url: 'queryordretasques.php',
-        	}).done(function() {
-	        	location.reload();
-        	});
-        	
-        	//window.location.href = "queryordretasques.php?drag="+id_drag+"&drop="+id_drop;
-      }
+	        }).done(function() {
+		       	location.reload();
+		    });        	
+		}
     });
     
     
     $( "#paperera" ).droppable({
     	drop: function( event, ui ) {
-        //alert('holaaa');
 	        var id_drop = $(this).attr('id');
 	        	id_drag = $(ui.draggable).attr('id');
 	        	

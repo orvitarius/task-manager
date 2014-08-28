@@ -49,6 +49,19 @@ function omplirArraySubprojects($id_projecte, $db) {
 
 
 
+/**
+ * Selector projectes
+ *
+ */
+ 
+function omplirMenuProjectes($db) {
+	$query = $db->query("SELECT nom FROM projectes");
+	while ($proj = $db->fetch_array($query)) {
+	   	echo '<li><a href="index.php?p='.$proj['nom'].'">'.$proj['nom'].'</a></li>';
+	}
+}
+
+
 
 /**
  * Tasques
@@ -272,7 +285,7 @@ function printSessionsFeina($id_projecte, $db) {
  */
 
 // PROJECTE ACTIU
-$projecte = (isset($_GET['p'])) ? $_GET['p'] : 'Reptext';
+$projecte = (isset($_GET['p'])) ? $_GET['p'] : 'Reptext'; //Tambe utilitzat a menu-superior.php
 $id_projecte = obtenirIDprojecte($projecte, $db);
 
 $arrayPrioritats	= omplirArrayPrioritats($db);

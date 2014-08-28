@@ -1,34 +1,115 @@
-* {
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  font-weight: 300; }
-
-html {
-  min-height: 100%;
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  font-weight: 300; }
-
-body {
-  overflow: auto;
-  background-image: url(../images/cork.jpg);
+.tasca {
+  float: left;
+  position: relative;
+  width: 200px;
+  height: 129px;
+  margin: 10px 5px 10px 10px;
+  user-select: none;
+  z-index: 1;
+  overflow: hidden;
+  transition: height 1s ease, opacity .5s ease;
+  background-color: antiquewhite;
+  background-image: -webkit-linear-gradient(antiquewhite 96%, #adadad 100%);
   background-repeat: repeat-y;
-  background-size: 100% auto;
-  background-position: 0 0; }
+  background-size: 100% 20px;
+  background-position: 0 -11px;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  background-clip: padding-box;
+  -webkit-box-shadow: 1px 3px 6px #555555;
+  -moz-box-shadow: 1px 3px 6px #555555;
+  box-shadow: 1px 3px 6px #555555; }
+  @media only screen and (max-width: 800px) {
+    .tasca {
+      width: 100%;
+      margin: 0px 0 0 0;
+      height: 40px;
+      box-shadow: none;
+      border-radius: 0;
+      border-bottom: 1px solid #cfcfcf; } }
+  .tasca:hover {
+    outline: 2px solid steelblue; }
+  .tasca .tasca-titol {
+    display: block;
+    margin-bottom: 5px;
+    width: 96%;
+    padding: 5px 2%;
+    background-color: antiquewhite;
+    border-bottom: 2px solid darkred;
+    user-select: none;
+    cursor: pointer; }
+    @media only screen and (max-width: 800px) {
+      .tasca .tasca-titol {
+        height: 30px;
+        line-height: 30px; } }
+  .tasca .tasca-descr {
+    font-size: 10pt;
+    text-align: left;
+    line-height: 15pt;
+    margin: 0px 5px 5px;
+    user-select: none; }
+    @media only screen and (max-width: 800px) {
+      .tasca .tasca-descr {
+        display: none; } }
+  .tasca .tasca-data {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    line-height: 25px;
+    width: 25px;
+    height: 25px;
+    font-size: 12pt;
+    font-weight: normal;
+    text-align: center;
+    border: 1px solid rgba(139, 0, 0, 0.8);
+    background-color: rgba(139, 0, 0, 0.1);
+    color: darkred;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    background-clip: padding-box; }
 
-.button {
-  width: 23px;
-  height: 23px;
-  background-color: black;
-  border: 2px solid darkred;
-  color: darkred;
-  display: block;
-  text-align: center;
-  line-height: 18px;
-  font-size: 23pt;
-  cursor: pointer;
-  border-radius: 50%;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  background-clip: padding-box; }
+.amagades {
+  height: 26px; }
+  .amagades .tasca-data {
+    height: 18px;
+    width: 18px;
+    font-size: 10pt;
+    line-height: 18px;
+    bottom: 3px;
+    right: 5px; }
+
+.Acabada {
+  opacity: .7; }
+  .Acabada .tasca-titol {
+    text-decoration: line-through;
+    color: darkred; }
+
+.Inactiva {
+  opacity: .7; }
+
+.urgent .tasca-titol {
+  background-color: rgba(154, 205, 50, 0.8);
+  border-bottom-color: #5c7b1e; }
+
+.molturgent .tasca-titol {
+  background-color: rgba(255, 165, 0, 0.8);
+  border-bottom-color: #cc8400; }
+
+.seleccionada {
+  outline: 5px solid rgba(70, 130, 180, 0.8); }
+  .seleccionada .tasca-titol {
+    background-color: rgba(70, 130, 180, 0.6);
+    border-color: steelblue; }
+  .seleccionada:hover {
+    outline: 5px solid rgba(70, 130, 180, 0.8); }
+
+.marcades {
+  opacity: 1; }
+
+.anti-marcades {
+  opacity: .3; }
 
 .menu-superior {
   width: 100%;
@@ -73,11 +154,69 @@ body {
         background-color: #999; }
         .menu-superior .selector li:hover a {
           color: ivory; }
-  .menu-superior #nova-feina {
+  .menu-superior .nav {
     position: absolute;
-    right: 15px;
-    top: 4px;
-    text-decoration: none; }
+    right: 0;
+    top: 0;
+    height: 35px;
+    width: 150px; }
+    .menu-superior .nav li {
+      margin: 7px 15px 0 0;
+      float: right;
+      width: 22px;
+      height: 22px;
+      cursor: pointer;
+      transition: background-position .5s ease;
+      background-image: url(../images/menu-sprite.png);
+      background-repeat: no-repeat;
+      background-size: 66px auto;
+      background-position: -22px -44px; }
+      .menu-superior .nav li a {
+        display: block;
+        width: 100%;
+        height: 100%; }
+      .menu-superior .nav li:hover {
+        background-position-y: -22px; }
+    .menu-superior .nav #projecte {
+      background-position-x: 0px; }
+    .menu-superior .nav #tasques {
+      background-position-x: -44px; }
+    .menu-superior .nav .current-item {
+      background-position-y: 0px; }
+      .menu-superior .nav .current-item:hover {
+        background-position-y: 0px; }
+
+* {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300; }
+
+html {
+  min-height: 100%;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300; }
+
+body {
+  overflow: auto;
+  background-image: url(../images/cork.jpg);
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+  background-position: 0 0; }
+
+.button {
+  width: 23px;
+  height: 23px;
+  background-color: black;
+  border: 2px solid darkred;
+  color: darkred;
+  display: block;
+  text-align: center;
+  line-height: 18px;
+  font-size: 23pt;
+  cursor: pointer;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  background-clip: padding-box; }
 
 .tasques {
   width: 900px;
@@ -103,88 +242,6 @@ body {
       height: 45%;
       overflow-y: scroll;
       position: fixed; } }
-  .tasques .tasca {
-    float: left;
-    position: relative;
-    width: 200px;
-    height: 129px;
-    margin: 10px;
-    margin-right: 5px;
-    background-color: ANTIQUEWHITE;
-    background-image: -webkit-linear-gradient(antiquewhite 96%, #adadad 100%);
-    background-repeat: repeat-y;
-    background-size: 100% 20px;
-    background-position: 0 -11px;
-    user-select: none;
-    z-index: 1;
-    overflow: hidden;
-    border-radius: 2px;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    background-clip: padding-box;
-    -webkit-box-shadow: 1px 3px 6px #555555;
-    -moz-box-shadow: 1px 3px 6px #555555;
-    box-shadow: 1px 3px 6px #555555; }
-    @media only screen and (max-width: 800px) {
-      .tasques .tasca {
-        width: 100%;
-        margin: 0px 0 0 0;
-        height: 40px;
-        box-shadow: none;
-        border-radius: 0;
-        border-bottom: 1px solid #cfcfcf; } }
-    .tasques .tasca .tasca-titol {
-      display: block;
-      margin-bottom: 5px;
-      width: 96%;
-      padding: 5px 2%;
-      background-color: antiquewhite;
-      border-bottom: 2px solid darkred;
-      user-select: none;
-      cursor: pointer; }
-      @media only screen and (max-width: 800px) {
-        .tasques .tasca .tasca-titol {
-          height: 30px;
-          line-height: 30px; } }
-    .tasques .tasca .tasca-descr {
-      font-size: 10pt;
-      text-align: left;
-      line-height: 15pt;
-      margin: 0px 5px 5px;
-      user-select: none; }
-      @media only screen and (max-width: 800px) {
-        .tasques .tasca .tasca-descr {
-          display: none; } }
-    .tasques .tasca .tasca-data {
-      position: absolute;
-      bottom: 8px;
-      right: 8px;
-      line-height: 25px;
-      width: 25px;
-      height: 25px;
-      font-size: 12pt;
-      font-weight: normal;
-      text-align: center;
-      border: 1px solid rgba(139, 0, 0, 0.8);
-      background-color: rgba(139, 0, 0, 0.1);
-      color: darkred;
-      border-radius: 50%;
-      -webkit-border-radius: 50%;
-      -moz-border-radius: 50%;
-      background-clip: padding-box; }
-  .tasques .seleccionada {
-    outline: 5px solid rgba(70, 130, 180, 0.8); }
-  .tasques .Acabada .tasca-titol {
-    text-decoration: line-through;
-    color: darkred; }
-  .tasques .Inactiva {
-    opacity: .7; }
-  .tasques .urgent .tasca-titol {
-    background-color: rgba(154, 205, 50, 0.8);
-    border-bottom-color: #5c7b1e; }
-  .tasques .molturgent .tasca-titol {
-    background-color: rgba(255, 165, 0, 0.8);
-    border-bottom-color: #cc8400; }
 
 .tasques.feina-hidden {
   width: 1100px; }
@@ -502,10 +559,10 @@ body {
 #paperera {
   position: fixed;
   bottom: 44px;
-  left: 30px;
+  right: 10px;
   width: 40px;
   height: 80px;
-  z-index: 2000;
+  z-index: 20;
   background-image: url(../images/bin.png);
   background-repeat: no-repeat;
   background-size: 100% 50px;
